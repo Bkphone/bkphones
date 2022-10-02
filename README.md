@@ -35,8 +35,15 @@ It's a simple php-mvc template version 1.0. We will maintain and develop in futu
     ```
 3. Điền các thông tin về `mysql server` của bạn. 
 - Trong đó `DB_PASSWORD`, `DB_USER` lần lượt là các thôn tin về `user` và `password` của `mysql server`. 
-- `dbname` là tên `schema` mà bạn đặt cho `database` trong project này.
+- `dbname` là tên `schema` mà bạn đặt cho `database` trong project [này](https://getcomposer.org/download/).
 
+### Install dependencies package
+1. Mở terminal lên rồi lệnh sau:
+
+    ```bash
+    composer install
+    ```
+2. Nếu chưa có `composer` thì tiến hành cài đặt ở trang web này 
 ### Run migration:
 
 1. Mở terminal lên rồi lệnh sau:
