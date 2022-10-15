@@ -13,7 +13,7 @@ With mvc structure we divide project into many folder: <br />
 - middlewares: contain middleware. <br />
 - core: contain the core classes. <br />
 
-It's a simple php-mvc template version 1.0. We will maintain and develop in future. Let's go
+It's a simple php-mvc template version 1.0. We will maintain and develop in future. Let's go!
 
 ## SET UP
 
