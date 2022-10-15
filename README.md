@@ -1,5 +1,5 @@
 # PHP MVC SYSTEM FOR SALE PHONES
-Using php to create a store sale phone website <br />
+Using php to create a website to sale phones. <br />
 With mvc structure we divide project into many folder: <br />
 
 - bootstrap: contain bootstrap framework. <br />
