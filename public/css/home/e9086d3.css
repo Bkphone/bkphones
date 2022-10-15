@@ -1,0 +1,59 @@
+.product-list-swiper .swiper-container .swiper-slide {
+    margin-right: 10px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15)
+}
+
+.product-list-swiper .swiper-container .swiper-slide .product-info-container {
+    height: calc(95% - 20px);
+    background-color: transparent;
+    box-shadow: unset;
+    margin: auto;
+    border: 0
+}
+
+.product-list-swiper .swiper-container .swiper-button-next,
+.product-list-swiper .swiper-container .swiper-button-prev {
+    width: 30px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
+    font-size: 1.8rem;
+    top: 50%;
+    transition: .3s;
+    outline: none;
+    opacity: .8
+}
+
+.product-list-swiper .swiper-container .swiper-button-next svg,
+.product-list-swiper .swiper-container .swiper-button-prev svg {
+    color: #707070
+}
+
+.product-list-swiper .swiper-container .swiper-button-next:after,
+.product-list-swiper .swiper-container .swiper-button-prev:after {
+    font-size: 24px;
+    font-weight: 900;
+    color: #3a3a3a
+}
+
+.product-list-swiper .swiper-container .swiper-button-next.swiper-button-disabled,
+.product-list-swiper .swiper-container .swiper-button-prev.swiper-button-disabled {
+    display: none
+}
+
+.product-list-swiper .swiper-container .swiper-button-prev {
+    padding-right: 10px;
+    border-radius: 0 100px 100px 0;
+    left: 0
+}
+
+.product-list-swiper .swiper-container .swiper-button-next {
+    padding-left: 10px;
+    border-radius: 100px 0 0 100px;
+    right: 0
+}

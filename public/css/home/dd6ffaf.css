@@ -1,0 +1,75 @@
+.block-filter-brands .brands__title {
+    margin-bottom: 10px
+}
+
+.block-filter-brands .brands__title p {
+    font-size: 18px;
+    font-weight: 700;
+    color: #444
+}
+
+.block-filter-brands .brands__content {
+    overflow-x: auto
+}
+
+.block-filter-brands .brands__content .list-brand {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.block-filter-brands .brands__content .list-brand__item {
+    height: 34px;
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    margin: 0 10px 10px 0;
+    align-items: center;
+    justify-content: center
+}
+
+.block-filter-brands .brands__content .list-brand__item img {
+    height: 15px;
+    max-width: none
+}
+
+.block-filter-brands .brands__content .list-brand__item span {
+    font-weight: 700;
+    color: #111;
+    font-size: 14px;
+    text-transform: uppercase;
+    white-space: nowrap
+}
+
+.block-filter-brands .brands__content .list-brand .activeBrand {
+    border: 1px solid #d70018;
+    position: relative;
+    overflow: hidden
+}
+
+.block-filter-brands .brands__content .list-brand .activeBrand:after {
+    content: "";
+    width: 15px;
+    height: 10px;
+    border-radius: 0 0 .5rem 0;
+    background: #d70018 url(https://cdn.cellphones.com.vn/media/icons/checkmark.svg) no-repeat 50%;
+    background-size: 50% !important;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+@media screen and (max-width:540px) {
+    .block-filter-brands .filter-brand__item img {
+        height: 12px
+    }
+
+    .block-filter-brands .brands__content {
+        overflow-x: auto
+    }
+
+    .block-filter-brands .brands__content .list-brand {
+        flex-wrap: nowrap
+    }
+}
