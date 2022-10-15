@@ -2,22 +2,28 @@
 
 namespace app\controllers;
 
-use app\controllers\SiteController;
-use app\models\Category;
+use app\core\Controller;
 use app\models\Product;
 use app\middlewares\AuthMiddleware;
 
-class MenuController extends SiteController
+class MenuController extends Controller
 {
     public function __construct()
     {
         $this->registerMiddleware(new AuthMiddleware(['menu']));
     }
 
+    public function home()
+    {
+        $products = Product::getAllProducts();
+        return $this->render('home', [
+            'products' => $products
+        ]);
+    }
+
     public function menu()
     {
         $products = Product::getAllProducts();
-
         return $this->render('menu', [
             'products' => $products
         ]);
