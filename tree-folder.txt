@@ -34,6 +34,6 @@ C:.
 |       customer.php
 |       customerclass.php
 |       
-\---views
+|---views
         dashboard.php
         
