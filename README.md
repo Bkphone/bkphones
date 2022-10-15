@@ -6,6 +6,7 @@ With mvc structure we divide project into many folder: <br />
 - font: contain font. <br />
 - img: contain img. <br />
 - views: contain files to display front-end. <br />
+- layouts: contain files to display layout, includes home, admin, auth. <br />
 - models: contain php files to deploy back-end. <br />
 - controllers: contain php to deploy back-end. <br />
 - migrations: update database. <br />
