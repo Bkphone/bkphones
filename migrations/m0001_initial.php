@@ -48,12 +48,52 @@ class m0001_initial
             `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
+            --
+            -- Table structure for table `categories`
+            --
+            CREATE TABLE `categories` (
+            `id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `name` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+            `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+            -- --------------------------------------------------------
+            
+            --
+            -- Table structure for table `products`
+            --
+            CREATE TABLE `products` (
+            `id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `category_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `name` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `image_url` varchar(1000) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `price_show` int(12) NOT NULL,
+            `price_through` int(12) NOT NULL,
+            `discount` int(3) NOT NULL,
+            `description` varchar(4000) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+            `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
             -- ---------------------------------------------------------
             --
             -- Indexes for table `users`
             --
             ALTER TABLE `users`
             ADD PRIMARY KEY (`id`);
+
+            --
+            -- Indexes for table `categories`
+            --
+            ALTER TABLE `categories`
+            ADD PRIMARY KEY (`id`);
+
+            --
+            -- Indexes for table `products`
+            --
+            ALTER TABLE `products`
+            ADD PRIMARY KEY (`id`),
+            ADD KEY `category_id` (`category_id`);
 
             --
             -- Indexes for table `stores`
