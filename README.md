@@ -1,5 +1,5 @@
 # PHP MVC SYSTEM FOR SALE PHONES
-Using php to create a coffee sale coffee website <br /> <br />
+Using php to create a coffee sale coffee website <br />
 With mvc structure we divide project into many folder: <br />
 
 - bootstrap: contain bootstrap framework. <br />
