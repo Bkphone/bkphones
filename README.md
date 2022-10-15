@@ -1,18 +1,19 @@
 # PHP MVC SYSTEM FOR SALE PHONES
-Using php to create a coffee sale coffee website <br /> <br />
+Using php to create a website to sale phones. <br />
 With mvc structure we divide project into many folder: <br />
 
 - bootstrap: contain bootstrap framework. <br />
 - font: contain font. <br />
 - img: contain img. <br />
 - views: contain files to display front-end. <br />
+- layouts: contain files to display layout, includes home, admin, auth. <br />
 - models: contain php files to deploy back-end. <br />
 - controllers: contain php to deploy back-end. <br />
 - migrations: update database. <br />
 - middlewares: contain middleware. <br />
 - core: contain the core classes. <br />
 
-It's a simple php-mvc template version 1.0. We will maintain and develop in future.
+It's a simple php-mvc template version 1.0. We will maintain and develop in future. Let's go !
 
 ## SET UP
 

@@ -26,9 +26,6 @@ C:.
 +---img
 |       test.png
 |       
-+---js
-|       test.js
-|       
 +---migration
 |       m0001_initial.php
 |       m0002_add_password_column.php
@@ -37,6 +34,6 @@ C:.
 |       customer.php
 |       customerclass.php
 |       
-\---views
+|---views
         dashboard.php
         
