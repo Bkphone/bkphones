@@ -28,36 +28,9 @@ class SiteController extends Controller
         $this->registerMiddleware(new AuthMiddleware(['profile']));
     }
 
-    public function home()
-    {
-        return $this->render('home', [
-            'name' => 'Buy me store'
-        ]);
-    }
-
     public function error() {
         $this->setLayout('auth');
         return $this->render('permission');
-    }
-
-    public function cart()
-    {
-        return $this->render('cart');
-    }
-
-    public function product()
-    {
-        return $this->render('product_detail');
-    }
-
-    public function menu()
-    {
-        return $this->render('menu');
-    }
-
-    public function collection()
-    {
-        return $this->render('collection');
     }
 
     public function about()
