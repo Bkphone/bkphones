@@ -1,0 +1,86 @@
+.block-product-list-filter {
+    padding-top: 10px
+}
+
+.block-product-list-filter .product-list-filter .product-item {
+    width: calc(20% - 8px);
+    margin-bottom: 10px;
+    max-width: unset
+}
+
+.block-product-list-filter .product-list-filter .product-item:not(:nth-of-type(5n)) {
+    margin-right: 10px
+}
+
+.block-product-list-filter .cps-block-content_btn-showmore {
+    position: unset;
+    padding: 0
+}
+
+.block-product-list-filter .cps-block-content_btn-showmore .btn-show-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    background: #fff;
+    font-size: 14px;
+    color: #212529;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    border-radius: 10px;
+    max-width: 335px;
+    height: 34px
+}
+
+.block-product-list-filter .cps-block-content_btn-showmore .btn-show-more:hover {
+    color: #d70018;
+    background-color: rgba(217, 83, 79, .1)
+}
+
+.block-product-list-filter .cps-block-content_btn-showmore .btn-show-more:hover svg {
+    fill: #d70018
+}
+
+@media screen and (max-width:1200px) {
+    .block-product-list-filter .product-list-filter .product-item {
+        width: calc(25% - 7.5px);
+        margin-bottom: 10px
+    }
+
+    .block-product-list-filter .product-list-filter .product-item:not(:nth-of-type(5n)) {
+        margin-right: unset
+    }
+
+    .block-product-list-filter .product-list-filter .product-item:not(:nth-of-type(4n)) {
+        margin-right: 10px
+    }
+}
+
+@media screen and (max-width:990px) {
+    .block-product-list-filter .product-list-filter .product-item {
+        width: calc(33.33333% - 6.66667px);
+        margin-bottom: 10px
+    }
+
+    .block-product-list-filter .product-list-filter .product-item:not(:nth-of-type(4n)) {
+        margin-right: unset
+    }
+
+    .block-product-list-filter .product-list-filter .product-item:not(:nth-of-type(3n)) {
+        margin-right: 10px
+    }
+}
+
+@media screen and (max-width:717px) {
+    .block-product-list-filter .product-list-filter .product-item {
+        width: calc(50% - 5px) !important;
+        margin-bottom: 10px
+    }
+
+    .block-product-list-filter .product-list-filter .product-item:not(:nth-of-type(3n)) {
+        margin-right: unset
+    }
+
+    .block-product-list-filter .product-list-filter .product-item:not(:nth-of-type(2n)) {
+        margin-right: 10px
+    }
+}
