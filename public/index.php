@@ -4,6 +4,7 @@ use app\controllers\SiteController;
 use app\core\Application;
 use app\controllers\ProfileController;
 use app\controllers\AdminController;
+use app\controllers\MenuController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
 
@@ -30,10 +31,10 @@ $app->router->post('/login', [SiteController::class, 'login']);
 $app->router->get('/logout', [SiteController::class, 'logout']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
 $app->router->get('/about', [SiteController::class, 'about']);
-$app->router->get('/stores', [StoreController::class, 'stores']);
 $app->router->get('/profile', [ProfileController::class, 'profile']);
 $app->router->post('/profile', [ProfileController::class, 'profile']);
 $app->router->get('/stores', [SiteController::class, 'stores']);
+$app->router->get('/menu', [MenuController::class, 'menu']);
 
 // admin general
 $app->router->get('/admin', [AdminController::class, 'index']);
