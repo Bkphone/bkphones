@@ -510,7 +510,8 @@
 }
 
 .block-featured-product .product-list-title {
-    margin-bottom: 2px
+    margin-bottom: 2px;
+    margin-top: 20px;
 }
 
 .block-featured-product .product-list-title .title {
