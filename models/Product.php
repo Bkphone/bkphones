@@ -107,6 +107,25 @@ class Product extends DBModel
         return parent::save();
     }
 
+    public static function getSpecialProduct($discount, $category_id = null)
+    {
+        $list = [];
+        $db = Database::getInstance();
+        if($category_id) {
+            $req = $db->query("SELECT * FROM products WHERE discount > $discount AND category_id = $category_id");
+        } else {
+            $req = $db->query("SELECT * FROM products WHERE discount > $discount AND category_id >= 3");
+        }
+
+        foreach ($req->fetchAll() as $item) {
+            $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
+                            $item['price_show'], $item['price_through'], $item['discount'], 
+                            $item['description'], $item['image_url']);
+        }
+
+        return $list;
+    }
+
     public static function getAllProducts()
     {
         $list = [];
