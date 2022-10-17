@@ -20,7 +20,7 @@ jobs:
             git reset --hard FETCH_HEAD
             git clean -d -f --exclude secrets
             chown $(whoami) . # PM2 doesn't recognize root user from Github Actions
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Down the service
         run: docker-compose down
       - name: Build application
