@@ -23,6 +23,7 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             cd /home/vndata/project/bkphones
             git fetch origin master
