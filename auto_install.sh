@@ -1,3 +1,3 @@
-cp .env.example .env
-composer install
-php migrations.php
+docker-compose down
+docker-compose build
+docker-compose up -d
