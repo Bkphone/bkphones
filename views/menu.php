@@ -221,7 +221,7 @@
             
         </div>
         <div class="cps-block-content_btn-showmore">
-            <a class="button btn-show-more">Xem thêmsssssssss
+            <a class="button btn-show-more">Xem thêm
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="10" height="10">
                         <path
