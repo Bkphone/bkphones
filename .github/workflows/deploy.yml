@@ -1,0 +1,32 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: unnecessary
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p ${{ secrets.PORT}} -H ${{ secrets.HOST }}  >> ~/.ssh/known_hosts
+
+      - name: Restart Apache Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/vndata/project/bkphones
+            git fetch origin master
+            git reset --hard FETCH_HEAD
+            git clean -d -f --exclude secrets
+            sudo docker-compose up -d
+            chown $(whoami) . # PM2 doesn't recognize root user from Github Actions
