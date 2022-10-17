@@ -2,7 +2,7 @@
 
 namespace app\middlewares;
 
-abstract class BaseMiddleware
+abstract class BaseMiddleWare
 {
     abstract public function execute();
 }

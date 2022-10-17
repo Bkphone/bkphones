@@ -4,13 +4,13 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\models\Product;
-use app\middlewares\AuthMiddleware;
+use app\middlewares\AuthMiddleWare;
 
 class MenuController extends Controller
 {
     public function __construct()
     {
-        $this->registerMiddleware(new AuthMiddleware(['menu']));
+        $this->registerMiddleware(new AuthMiddleWare(['menu']));
     }
 
     public function home()

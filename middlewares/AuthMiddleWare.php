@@ -6,7 +6,7 @@ namespace app\middlewares;
 use app\core\Application;
 use app\exception\ForLoginException;
 
-class AuthMiddleware extends BaseMiddleware
+class AuthMiddleware extends BaseMiddleWare
 {
     protected array $actions;
 

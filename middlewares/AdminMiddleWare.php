@@ -6,7 +6,7 @@ namespace app\middlewares;
 use app\core\Application;
 use app\exception\ForbiddenException;
 
-class AdminMiddleware extends BaseMiddleware
+class AdminMiddleWare extends BaseMiddleWare
 {
     public array $actions;
 

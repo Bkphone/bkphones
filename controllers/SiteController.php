@@ -6,7 +6,7 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\exception\ForbiddenException;
-use app\middlewares\AuthMiddleware;
+use app\middlewares\AuthMiddleWare;
 
 use app\models\LoginForm;
 use app\models\Store;
@@ -25,7 +25,7 @@ class SiteController extends Controller
                 setcookie ("member_login", Application::$app->session->get('user'), time() + 3600 * 24 * 30);
             }
         }
-        $this->registerMiddleware(new AuthMiddleware(['profile']));
+        $this->registerMiddleware(new AuthMiddleWare(['profile']));
     }
 
     public function error() {

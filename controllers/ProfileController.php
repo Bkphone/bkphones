@@ -5,14 +5,14 @@ namespace app\controllers;
 use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
-use app\middlewares\AuthMiddleware;
+use app\middlewares\AuthMiddleWare;
 use app\models\User;
 
 class ProfileController extends Controller
 {
     public function __construct()
     {   
-        $this->registerMiddleware(new AuthMiddleware(['profile']));
+        $this->registerMiddleware(new AuthMiddleWare(['profile']));
     }
     
     public function profile(Request $request)
