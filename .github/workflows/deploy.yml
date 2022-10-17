@@ -15,15 +15,18 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: VPS 112
+          name: intern_key
+          known_hosts: ${{ secrets.HOST }}
+          config: |
+            Host bastion
+              HostName ${{ secrets.HOST }}
+              User ${{ secrets.USERNAME }}
+              IdentityFile ~/.ssh/intern_key
 
       - name: Adding Known Hosts
         run: ssh-keyscan -p ${{ secrets.PORT}} -H ${{ secrets.HOST }}  >> ~/.ssh/known_hosts
 
-      - name: Deploy with rsync
-        run: rsync -avz -e "ssh -p ${{ secrets.PORT }}" ./dist/ ${{ secrets.USER }}@${{ secrets.HOST }}:/home/vndata/project/bkphones
-
-      - name: Restart Node Server
+      - name: Restart Apache Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
