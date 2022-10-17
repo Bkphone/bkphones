@@ -63,7 +63,6 @@ It's a simple php-mvc template version 1.0. We will maintain and develop in futu
 3. Nếu không được như vậy thì hãy `drop` hết table trong `database` rồi chạy migrate lại.<br />
 
 
-
 ## Run project
 
 Để chạy project, chạy lệnh sau:
