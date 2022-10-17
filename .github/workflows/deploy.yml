@@ -19,5 +19,11 @@ jobs:
             git fetch origin master
             git reset --hard FETCH_HEAD
             git clean -d -f --exclude secrets
-            docker-compose down && docker-composer build && docker-composer up
             chown $(whoami) . # PM2 doesn't recognize root user from Github Actions
+      - uses: actions/checkout@v2
+      - name: Down the service
+        run: docker-compose down
+      - name: Build application
+        run: docker-compose build
+      - name: Runing the service
+        run: docker-compose up -d
