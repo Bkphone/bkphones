@@ -2,26 +2,16 @@ name: deploy
 on:
   push:
     branches:
-      - main
       - master
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          name: intern_key
-          known_hosts: ${{ secrets.HOST }}
-          config: |
-            Host bastion
-              HostName ${{ secrets.HOST }}
-              User ${{ secrets.USERNAME }}
-              IdentityFile ~/.ssh/intern_key
+          known_hosts: unnecessary
 
       - name: Adding Known Hosts
         run: ssh-keyscan -p ${{ secrets.PORT}} -H ${{ secrets.HOST }}  >> ~/.ssh/known_hosts
@@ -38,5 +28,5 @@ jobs:
             git fetch origin master
             git reset --hard FETCH_HEAD
             git clean -d -f --exclude secrets
-            docker-compose up -d
+            sudo docker-compose up -d
             chown $(whoami) . # PM2 doesn't recognize root user from Github Actions
