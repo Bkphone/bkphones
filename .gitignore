@@ -1,3 +1,7 @@
 /vendor/
 .env
 /back-log/
+/docker/
+/docker-compose.yml
+.dockerignore
+/auto_install.sh
