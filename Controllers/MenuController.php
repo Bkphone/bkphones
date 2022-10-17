@@ -15,9 +15,9 @@ class MenuController extends Controller
 
     public function home()
     {
-        $samsungs = Product::getSpecialProduct(9, 2);
-        $iphones = Product::getSpecialProduct(8, 1);
-        $watchs = Product::getSpecialProduct(9);
+        $samsungs = Product::getSpecialProduct(9, 2, 4);
+        $iphones = Product::getSpecialProduct(8, 1, 4);
+        $watchs = Product::getSpecialProduct(9, null, 4);
 
         return $this->render('home', [
             'samsungs' => $samsungs,
