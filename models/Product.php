@@ -107,7 +107,7 @@ class Product extends DBModel
         return parent::save();
     }
 
-    public static function getSpecialProduct($discount, $category_id = null)
+    public static function getSpecialProduct($discount, $category_id = null, $quota = 10)
     {
         $list = [];
         $db = Database::getInstance();
@@ -122,8 +122,14 @@ class Product extends DBModel
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url']);
         }
-
-        return $list;
+        
+        if (count($list) > $quota) {
+            $result = array_slice($list, 0, $quota);
+        } else {
+            $result = $list;
+        }
+        
+        return $result;
     }
 
     public static function getAllProducts()
