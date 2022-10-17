@@ -23,11 +23,12 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            cd /home/vndata/project/bkphones
+            cd /home/project/bkphones
             git fetch origin master
             git reset --hard FETCH_HEAD
             git clean -d -f --exclude secrets
-            sudo docker-compose up -d
+            docker-compose down
+            docker-composer build
+            docker-composer up
             chown $(whoami) . # PM2 doesn't recognize root user from Github Actions
