@@ -18,6 +18,7 @@ services:
     container_name: mysql
     ports:
       - "3306:3306"
+    command: CREATE DATABASE IF NOT EXISTS php_mvc;
     volumes:
       - mysql-data:/var/lib/mysql
       - ./docker/mysql-config.cnf:/etc/mysql/conf.d/config.cnf
