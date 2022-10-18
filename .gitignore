@@ -1,3 +1,4 @@
 /vendor/
 .env
 /back-log/
+config.cnf
