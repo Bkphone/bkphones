@@ -1,0 +1,1 @@
+mysql --defaults-extra-file=/config.cnf -e "CREATE DATABASE IF NOT EXISTS php_mvc;"
