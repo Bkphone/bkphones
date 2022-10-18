@@ -16,7 +16,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/project/bkphones
-            git fetch origin master
+            git pull origin master
             git reset --hard FETCH_HEAD
             git clean -d -f --exclude secrets
             bash auto_install.sh
