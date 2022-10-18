@@ -12,7 +12,7 @@ C:.
 +---bootstrap
 |   +---css
 |   |
-|   \---js
+|   |---js
 |
 +---config
 |       config.php
