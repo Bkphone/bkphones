@@ -6,7 +6,6 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Application;
-use app\core\Request;
 use app\middlewares\AdminMiddleWare;
 use app\models\User;
 
