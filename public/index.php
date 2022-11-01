@@ -7,6 +7,7 @@ use app\controllers\AdminController;
 use app\controllers\MenuController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
+use app\controllers\CartController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -35,6 +36,7 @@ $app->router->get('/profile', [ProfileController::class, 'profile']);
 $app->router->post('/profile', [ProfileController::class, 'profile']);
 $app->router->get('/stores', [SiteController::class, 'stores']);
 $app->router->get('/menu', [MenuController::class, 'menu']);
+$app->router->get('/cart', [CartController::class, 'cart']);
 
 // admin general
 $app->router->get('/admin', [AdminController::class, 'index']);
