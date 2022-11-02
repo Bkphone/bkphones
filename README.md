@@ -21,6 +21,7 @@ It's a simple php-mvc template version 1.0. We will maintain and develop in futu
 
 1. Đầu tiên, sử dụng DBMS của bạn tạo một connection mysql database
 2. Chạy lệnh sau để khởi tạo biến môi trường `.env`
+
     ```bash
     cp .env.example .env
     ```
