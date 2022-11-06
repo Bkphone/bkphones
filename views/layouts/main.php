@@ -91,7 +91,7 @@ if(!Application::$app->isGuest()) {
                                         </svg>
                                     </div>
                                 </a> 
-                                <a href="#" class="header-item btn-menu">
+                                <a href="/menu" class="header-item btn-menu">
                                     <div class="about__box-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.99 26.99">
                                             <defs>
@@ -115,12 +115,9 @@ if(!Application::$app->isGuest()) {
                                             </g>
                                         </svg>
                                     </div>
-                                    <a target="_blank" rel="noopener" href="/menu" class="header-item about-delivery-tracking">
-                                        <div class="about__box-content">
-                                            <p class="title">Danh mục<br>điện thoại</p>
-                                        </div>
-                                    </a> 
-                                    
+                                    <div class="about__box-content">
+                                        <p class="title">Danh mục<br>điện thoại</p>
+                                    </div>
                                 </a>
                                 <div class="box-search cps-navbar__search">
                                     <form>
