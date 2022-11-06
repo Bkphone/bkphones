@@ -142,14 +142,14 @@ if(!Application::$app->isGuest()) {
                                         <p class="title">Gọi mua hàng<br> <strong>1800.2097</strong></p>
                                     </div>
                                 </a> 
-                                <a target="_blank" rel="noopener" href="/stores" class="header-item about-store">
+                                <!-- <a target="_blank" rel="noopener" href="/stores" class="header-item about-store">
                                     <div class="about__box-icon">
                                         <img src="/images/home/location.svg">
                                     </div>
                                     <div class="about__box-content">
                                         <p class="title">Cửa hàng<br>gần bạn</p>
                                     </div>
-                                </a> 
+                                </a>  -->
                                 <a target="_blank" rel="noopener" href="/lookup-orders" class="header-item about-delivery-tracking">
                                     <div class="about__box-icon">
                                         <img src="/images/home/order-lookup.svg" alt="Tra cứu đơn hàng">
@@ -248,7 +248,7 @@ if(!Application::$app->isGuest()) {
                                                     (8h00 - 22h00)
                                                 </div>
                                             </li>
-                                            <li class="link">
+                                            <!-- <li class="link">
                                                 <div>Gọi bảo hành <a href="tel:18002064"><strong>1800.2064</strong></a>
                                                     (8h00 - 21h00)
                                                 </div>
@@ -257,10 +257,10 @@ if(!Application::$app->isGuest()) {
                                                 <div>Gọi khiếu nại <a href="tel:18002063"><strong>1800.2063</strong></a>
                                                     (8h00 - 21h30)
                                                 </div>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
-                                    <div class="box-two__warranty">
+                                    <!-- <div class="box-two__warranty">
                                         <div class="warranty-logo">
                                             <a href="#" class="warranty-logo-dtv">
                                                 <div class="box-left">
@@ -279,7 +279,7 @@ if(!Application::$app->isGuest()) {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="column is-one-quarter-desktop is-half-tablet is-full-mobile top__box-three">
                                     <div class="box-three__search">
@@ -289,26 +289,26 @@ if(!Application::$app->isGuest()) {
                                                     Mua hàng và thanh toán Online
                                                 </a>
                                             </li>
-                                            <li class="link">
+                                            <!-- <li class="link">
                                                 <a target="_blank" rel="noopener" href="/tra-gop-online-the-tin-dung">Mua
                                                     hàng trả góp Online
                                                 </a>
-                                            </li>
+                                            </li> -->
                                             <li class="link">
                                                 <a target="_blank" rel="noopener" href="/lookup-orders">
                                                     Tra thông tin đơn hàng
                                                 </a>
                                             </li>
-                                            <li class="link">
+                                            <!-- <li class="link">
                                                 <a target="_blank" rel="noopener" href="/bkmember">
                                                     Tra điểm Smember
                                                 </a>
-                                            </li>
-                                            <li class="link">
+                                            </li> -->
+                                            <!-- <li class="link">
                                                 <a target="_blank" rel="noopener"href="/sua-chua-phan-cung.html">
                                                     Dịch vụ bảo hành điện thoại
                                                 </a>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
