@@ -1,65 +1,149 @@
+.container .page_name {
+    position: relative;
+    width: 520px;
+    height: 45px;
+    margin: auto;
+    text-align: center;
+    line-height: 45px;
+    margin-bottom: 5px;
+}
+
 .container .page_name h2{
     font-size: 24px;
-    color: #444;
-    font-weight: 700;
-}
-
-table, th, td {
-    border: 1px solid;
-}
-
-.container table{
-    text-align: center;
-}
-
-.container .cart_table h3{
     color: #dc143c;
-    font-size: 20px;
     font-weight: 700;
-    text-align: center;
 }
 
-.container .cart_table .STT{
-    width: 60px;
+.container .product-container-box{
+    max-width: 620px;
+    min-height: 250px;
+    border-radius: 10px;
+    border-color: #969696;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    box-shadow: 4px 3px 8px 1px #b4c6d0;
 }
 
-.container .cart_table .product_name{
-    width: 610px;
-    text-align: left;
-    padding-left: 10px;
+.container .product-container-box .product-display{
+    position: relative;
 }
 
-.container .cart_table .product_image{
-    width: 150px;
+.container .product-container-box .product-display .product-image{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    max-width: 220px;
     height: auto;
+    padding: 10px;
 }
 
-.container .cart_table .product_price{
-    width: 90px;
+.container .product-container-box .product-display .product-image img{
+    width: 200px;
+    height: 200px;
 }
 
-.container .cart_table .quantity{
-    width: 80px;
+.container .product-container-box .product-display .product-detail{
+    position: absolute;
+    left: 230px;
+    top: 0px;
 }
 
-.container .cart_table .total_money{
-    width: 140px;
+.container .product-container-box .product-display .product-detail .product-name{
+    color: black;
+    display: inline-block;
+    font-weight: 600;
 }
 
-.container .cart_table .product_delete{
-    width: 70px;
+.container .product-container-box .product-display .product-detail .current-price{
+    position: absolute;
+    font-size: larger;
+    color: #d70018;
 }
 
-.container .cart_table .product_image img{
-    max-width: 100%;
-    max-height: 100%;
+.container .product-container-box .product-display .product-detail .old-price{
+    position: absolute;
+    left: 100px;
+    color: #969696;
+    text-decoration-line: line-through;
 }
 
-.container .table_footer th,td{
-    border: none!important;
+.container .product-container-box .product-display .product-detail .discount{
+    position: absolute;
+    left: 200px;
+    border-radius: 5px;
+    background-color: #d70018;
+    text-align: center;
+    color: white;
+    max-width: 80px;
 }
 
-.container #form-button{
-    float:right;
-    padding-top: 10px;
+.container .product-container-box .product-display .product-detail .product-quantity{
+    position: absolute;
+    top: 55px;
+}
+
+.container .product-container-box .product-display .product-detail .description-box{
+    position: absolute;
+    top: 115px;
+    padding: 10px;
+    background-color: #eff1f2;
+    border-radius: 5px;
+    min-height: 100px;
+    min-width: 370px;
+}
+
+.container .bottom-box{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 650px;
+    border-radius: 10px;
+    border-color: #969696;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    box-shadow: 4px 3px 8px 1px #b4c6d0;
+}
+
+.container .bottom-box .total-money{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.container .bottom-box .total-money .money-show{
+    position: absolute;
+    color:#d70018;
+    right: 10px;
+    top: 10px;
+}
+
+.container .bottom-box .form-button{
+    width: 100%;
+}
+
+.container .bottom-box .form-button #update-button{
+    width: 100%;
+    background-color: #d70018;
+    border-color: #d70018;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.container .bottom-box .form-button #order-button{
+    width: 100%;
+    border-color: #d70018;
+    border-radius: 5px;
+    color: #d70018;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
 }
