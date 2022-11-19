@@ -37,6 +37,7 @@ $app->router->post('/profile', [ProfileController::class, 'profile']);
 $app->router->get('/stores', [SiteController::class, 'stores']);
 $app->router->get('/menu', [MenuController::class, 'menu']);
 $app->router->get('/cart', [CartController::class, 'cart']);
+$app->router->post('/cart', [CartController::class, 'cart']);
 
 // admin general
 $app->router->get('/admin', [AdminController::class, 'index']);
