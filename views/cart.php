@@ -3,15 +3,8 @@
 <?php
     use app\models\ProductInCart;
 
-    function pre_r($array){
-        echo"<pre>";
-        print_r($array);
-        echo"</pre>";
-    }
-    
     // Updating Product Quantities
     if (isset($_POST['Update'])) {
-        pre_r($_POST);
         // Loop through the post data so we can update the quantities for every product in cart
         foreach ($_POST as $k => $v) {
             if (strpos($k, 'quantity') !== false && is_numeric($v)) {
@@ -25,14 +18,28 @@
     }    
 
     //Delete Product from cart
+    if (isset($_POST['Remove'])) {
+        $value = $_POST['Remove'];
+        ProductInCart::removeFromCart($value);
+        header('location: cart');
+        exit;
+    }    
 ?>
 
 <div class="container">
     <div class="page_name">
         <h2>GIỎ HÀNG CỦA BẠN</h2>
     </div>
+    <?php
+        if(empty($params['ProductDetails'])){
+    ?>
+    <div class="message">
+        <img src="https://th.bing.com/th/id/R.68df6c5450dd68c1e11bb687e315400a?rik=RHk6aVd8%2fIghoA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_56611.png&ehk=t%2b7%2fprTGfl6Dgk%2bQc6Zdy%2bOzt3kAc0mB0NodMv9pBKo%3d&risl=&pid=ImgRaw&r=0" alt="Sad-face">
+        <h2>Bạn không có sản phẩm nào trong giỏ hàng</h2>
+        <a href="/">Quay lại trang chủ</a>
+    </div>
+    <?php }else{ ?>
     <form id="cart-form" action="" method="POST">
-
     <?php  
         $STT = 0;
         $total_money=0;
@@ -47,11 +54,17 @@
                     <img src="<?= $product->image_url ?>" alt="<?= $product->name ?>">
                 </div>
                 <div class="product-detail">
+                    <div class="product-remove">
+                        <button id="remove-<?=$product->id?>" type="submit" form="cart-form" name ="Remove" value="<?=$product->id?>">X</button>
+                        <!-- <input id="remove-<?=$product->id?>" type="submit" name="Remove" value="X" /> -->
+                    </div>
                     <div class="product-name"><h3><?= $product->name ?></h3></div>
-                    <div class="current-price"><h3><?= $product->price_show ?>₫</h3></div>
-                    <div class="old-price"><h3><?= $product->price_through ?>₫</h3></div>
-                    <div class="discount">
-                        <h3>Giảm <?= round(($product->price_through-$product->price_show)/$product->price_show*100)?>%</h3>
+                    <div class="price">
+                        <div class="current-price"><h3><?= $product->price_show ?>₫</h3></div>
+                        <div class="old-price"><h3><?= $product->price_through ?>₫</h3></div>
+                        <div class="discount">
+                            <h3>Giảm <?= round(($product->price_through-$product->price_show)/$product->price_show*100)?>%</h3>
+                        </div>
                     </div>
                     <div class="product-quantity">
                         <h3>Chọn số lượng:</h3>
@@ -77,4 +90,5 @@
             </div>
         </div>
     </form>
+    <?php } ?>
 </div>

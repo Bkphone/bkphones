@@ -82,6 +82,20 @@ class ProductInCart extends DBModel{
         return parent::save();
     }
 
+    public static function getTotalQuantity(){
+        $db = Database::getInstance();
+        $result = $db->query("SELECT SUM(quantity) AS value_sum FROM productincart;");
+        $value = $result->fetch();
+        return $value[0]; 
+    }
+
+    public static function removeFromCart($key){
+        if($key){
+            $db = Database::getInstance();
+            $db->query("DELETE FROM productincart WHERE product_id = '$key';");
+        }
+    }
+
     public static function changeQuantity($key, $value){
         $db = Database::getInstance();
         if($key){

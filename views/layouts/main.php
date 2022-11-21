@@ -4,6 +4,7 @@ $path = str_replace($_SERVER['DOCUMENT_ROOT'], "", $path);
 
 header("Content-type: text/html; charset=utf-8");
 use app\core\Application;
+use app\models\ProductInCart;
 
 $user = null;
 if(!Application::$app->isGuest()) {
@@ -164,7 +165,9 @@ if(!Application::$app->isGuest()) {
                                     </div>
                                     <div class="about__box-content">
                                         <p class="title">Giỏ <br>hàng</p> 
-                                        <span id="items_in_cart">0</span>
+                                        <span id="items_in_cart">
+                                        <?php echo ProductInCart::getTotalQuantity();?>
+                                        </span>
                                     </div>
                                 </a>
                                 <a href="/login" class="header-item about-5 about-smember cta-smember">
