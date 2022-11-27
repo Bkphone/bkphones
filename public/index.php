@@ -1,9 +1,10 @@
 <?php
 
+use app\controllers\CategoryController;
 use app\controllers\SiteController;
 use app\core\Application;
 use app\controllers\ProfileController;
-use app\controllers\AdminController;
+use app\controllers\ProductController;
 use app\controllers\MenuController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
@@ -37,8 +38,12 @@ $app->router->get('/stores', [SiteController::class, 'stores']);
 $app->router->get('/menu', [MenuController::class, 'menu']);
 
 // admin general
-$app->router->get('/admin', [AdminController::class, 'index']);
+$app->router->get('/admin', [SiteController::class, 'admin']);
+$app->router->post('/admin/login', [SiteController::class, 'login']);
+$app->router->get('/admin/login', [SiteController::class, 'login']);
 $app->router->get('/admin/users', [UserController::class, 'index']);
+$app->router->get('/admin/products', [ProductController::class, 'index']);
+$app->router->get('/admin/category', [CategoryController::class, 'index']);
 
 // store
 $app->router->get('/admin/stores/delete', [StoreController::class, 'delete']);
@@ -63,6 +68,19 @@ $app->router->post('/admin/users/edit', [UserController::class, 'update']);
 $app->router->post('/admin/users/create', [UserController::class, 'create']);
 $app->router->post('/admin/users/details', [UserController::class, 'details']);
 $app->router->post('/admin/users/edit/password', [UserController::class, 'password']);
+
+// product
+$app->router->get('/admin/products/delete', [ProductController::class, 'delete']);
+$app->router->get('/admin/products/edit', [ProductController::class, 'update']);
+$app->router->get('/admin/products/create', [ProductController::class, 'create']);
+
+$app->router->post('/admin/products/edit', [ProductController::class, 'update']);
+$app->router->post('/admin/products/create', [ProductController::class, 'create']);
+
+// category
+$app->router->post('/admin/category', [CategoryController::class, 'create']);
+$app->router->post('/admin/category/edit', [CategoryController::class, 'update']);
+$app->router->get('/admin/category/delete', [CategoryController::class, 'delete']);
 
 // run
 $app->run();
