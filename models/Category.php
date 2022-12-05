@@ -52,15 +52,32 @@ class Category extends DBModel
     public function labels(): array
     {
         return [
-            'name' => 'Tên mục',
+            'name' => 'Tên danh mục',
         ];
     }
 
     public function rules(): array
     {
         return [
-            'name' => [self::RULE_REQUIRED, [self::RULE_MAX, 'max' <= 30]],
+            // 'name' => [self::RULE_REQUIRED, [self::RULE_MAX, 'max' <= 30]],
+            'name' => [self::RULE_REQUIRED],
         ];
+    }
+
+    public static function getCategoryByPaging($page_idx, $num_cate)
+    {
+        $list = [];
+        $db = Database::getInstance();
+        $starting_limit_number = ($page_idx - 1) * $num_cate;
+        $sql = "SELECT * FROM categories LIMIT " . $starting_limit_number . ',' . $num_cate;
+        $req = $db->query($sql);
+        foreach ($req->fetchAll() as $item) {
+            $list[] = new Category(
+                $item['id'],
+                $item['name']
+            );
+        }
+        return $list;
     }
 
     public function save()
@@ -69,12 +86,11 @@ class Category extends DBModel
         return parent::save();
     }
 
-    public function delete()
+    public static function delete($id)
     {
-        $tablename = $this->tableName();
-        $sql = "DELETE FROM $tablename WHERE id=?";
+        $sql = "DELETE FROM categories WHERE id=?";
         $stmt= self::prepare($sql);
-        $stmt->execute([$this->id]);
+        $stmt->execute([$id]);
         return true;
     }
 
