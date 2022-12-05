@@ -107,9 +107,7 @@ class Order extends DBModel{
         return [
             'username' => [self::RULE_REQUIRED],
             'address' => [self::RULE_REQUIRED],
-            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [
-                self::RULE_UNIQUE, 'class' => self::class
-            ]],
+            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL],
         ];
     }
 
