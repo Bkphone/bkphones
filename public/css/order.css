@@ -1,0 +1,54 @@
+.message{
+    position: relative;
+    top: 200px;
+    padding: 50px 0;
+    margin:auto;
+    width: 50%;
+    text-align: center;
+    color: #322433;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.title{
+    margin: auto;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th, td{
+    padding: 8px;
+}
+
+thead {
+    background-color: #333;
+    font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 2%;
+}
+
+thead th {
+    width: 12.5%;
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+
+tbody th {
+    background-color: #36c;
+    color: #fff;
+    text-align: left;
+}
