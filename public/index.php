@@ -64,5 +64,8 @@ $app->router->post('/admin/users/create', [UserController::class, 'create']);
 $app->router->post('/admin/users/details', [UserController::class, 'details']);
 $app->router->post('/admin/users/edit/password', [UserController::class, 'password']);
 
+// product
+$app->router->get('/product', [MenuController::class, 'detail']);
+
 // run
 $app->run();
