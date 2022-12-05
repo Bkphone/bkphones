@@ -41,6 +41,7 @@ if(!Application::$app->isGuest()) {
     <link rel="stylesheet" href="/css/home/63e594b.css">
     <link rel="stylesheet" href="/css/home/b10a813.css">
     <link rel="stylesheet" href="/css/home/6aa7e2b.css">
+    <link rel="stylesheet" href="/css/home/1a0550b.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
