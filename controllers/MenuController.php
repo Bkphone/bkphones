@@ -17,14 +17,14 @@ class MenuController extends Controller
 
     public function home()
     {
-        $samsungs = Product::getSpecialProduct(8, 2, 4);
-        $iphones = Product::getSpecialProduct(8, 1, 4);
-        $watchs = Product::getSpecialProduct(9, null, 4);
+        $samsungs = Product::getSpecialProduct(5, 'SamSung', 4);
+        $xiaomis = Product::getSpecialProduct(5, 'Xiaomi', 4);
+        $iphones = Product::getSpecialProduct(5, 'Apple iphone', 4);
 
         return $this->render('home', [
             'samsungs' => $samsungs,
             'iphones' => $iphones,
-            'watchs' =>  $watchs
+            'xiaomis' =>  $xiaomis
         ]);
     }
 
