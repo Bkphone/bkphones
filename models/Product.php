@@ -15,6 +15,18 @@ class Product extends DBModel
     public float $price_through;
     public string $description;
     public string $image_url;
+    public string $detail;
+    public string $rate_count;
+    public string $star;
+    public string $screen;
+    public string $os;
+    public string $camera;
+    public string $camera_front;
+    public string $cpu;
+    public string $ram;
+    public string $rom;
+    public string $micro_usb;
+    public string $battery;
 
     public function __construct(
         $id = '',
@@ -24,7 +36,18 @@ class Product extends DBModel
         $price_through = 0,
         $discount = 0,
         $description = '',
-        $image_url = ''
+        $image_url = '',
+        $rate_count = '',
+        $star = '',
+        $screen = '',
+        $os = '',
+        $camera = '',
+        $camera_front = '',
+        $cpu = '',
+        $ram = '',
+        $rom = '',
+        $micro_usb = '',
+        $battery = ''
     ) {
         $this->id = $id;
         $this->category_id = $category_id;
@@ -34,6 +57,17 @@ class Product extends DBModel
         $this->discount = $discount;
         $this->description = $description;
         $this->image_url = $image_url;
+        $this->rate_count = $rate_count;
+        $this->star = $star;
+        $this->screen = $screen;
+        $this->os = $os;
+        $this->camera = $camera;
+        $this->camera_front = $camera_front;
+        $this->cpu = $cpu;
+        $this->ram = $ram;
+        $this->rom = $rom;
+        $this->micro_usb = $micro_usb;
+        $this->battery = $battery;
     }
 
     public function setId($id) { $this->id = $id; }
@@ -72,7 +106,9 @@ class Product extends DBModel
 
     public function attributes(): array
     {
-        return ['id', 'category_id', 'name', 'price_show', 'price_through', 'discount', 'description', 'image_url'];
+        return ['id', 'category_id', 'name', 'price_show', 'price_through', 'discount', 
+                'description', 'image_url', 'rate_count', 'star', 'screen', 'os', 'camera',
+                'camera_front', 'cpu', 'ram', 'rom', 'micro_usb', 'battery'];
     }
    
     public function labels(): array
@@ -83,7 +119,20 @@ class Product extends DBModel
             'price_show' => 'Giá',
             'description' => 'Mô tả sản phẩm',
             'image_url' => 'Hình ảnh sản phẩm',
-            'category_id' => 'Mã mục'
+            'category_id' => 'Mã mục',
+            'detail' => 'Chi tiết',
+            'star' => 'Star',
+            'rate_count' => 'Số lượt đánh giá',
+            'star' => 'Star',
+            'screen' => 'Màn hình',
+            'os' => 'Hệ điều hành',
+            'camera' => 'Camera sau',
+            'camera_front' => 'Camera trước',
+            'cpu' => 'Cpu',
+            'ram' => 'Ram',
+            'rom' => 'Bộ nhớ trong',
+            'micro_usb' => 'Bộ nhớ mở rộng',
+            'battery' => 'Pin'
         ];
     }
     
@@ -107,20 +156,22 @@ class Product extends DBModel
         return parent::save();
     }
 
-    public static function getSpecialProduct($discount, $category_id = null, $quota = 10)
+    public static function getSpecialProduct($discount, $company = null, $quota = 10)
     {
         $list = [];
         $db = Database::getInstance();
-        if($category_id) {
-            $req = $db->query("SELECT * FROM products WHERE discount > $discount AND category_id = $category_id");
+        if($company) {
+            $req = $db->query("SELECT * FROM products WHERE discount > $discount AND company LIKE '%$company%'");
         } else {
-            $req = $db->query("SELECT * FROM products WHERE discount > $discount AND category_id >= 3");
+            $req = $db->query("SELECT * FROM products WHERE discount > $discount AND category_id = 1");
         }
 
         foreach ($req->fetchAll() as $item) {
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
-                            $item['description'], $item['image_url']);
+                            $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
+                            $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
+                            $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
         }
         
         if (count($list) > $quota) {
@@ -132,6 +183,19 @@ class Product extends DBModel
         return $result;
     }
 
+    public static function getProductDetail($id)
+    {
+        $db = Database::getInstance();
+        $req = $db->query("SELECT * FROM products WHERE id = '$id'");
+        $item = $req->fetchAll()[0];
+        $product = new Product($item['id'], $item['category_id'], $item['name'], 
+                        $item['price_show'], $item['price_through'], $item['discount'], 
+                        $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
+                        $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
+                        $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
+        return $product;
+    }
+
     public static function getAllProducts()
     {
         $list = [];
@@ -141,7 +205,9 @@ class Product extends DBModel
         foreach ($req->fetchAll() as $item) {
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
-                            $item['description'], $item['image_url']);
+                            $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
+                            $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
+                            $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
         }
 
         return $list;

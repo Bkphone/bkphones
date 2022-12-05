@@ -1,0 +1,73 @@
+.small-box {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.small-box>.inner {
+    padding: 10px;
+}
+
+.bg-info {
+    background-color: #17a2b8!important;
+    color: #fff!important;
+}
+
+.bg-success {
+    background-color: #28a745!important;
+    color: #fff!important;
+}
+
+.bg-warning {
+    background-color: #ffc107!important;
+    color: #fff!important;
+}
+
+.bg-danger {
+    background-color: #dc3545!important;
+    color: #fff!important;
+}
+
+.small-box>.small-box-footer {
+    background-color: rgba(0,0,0,.1);
+    color: rgba(255,255,255,.8);
+    display: block;
+    padding: 3px 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.small-box h3, .small-box p {
+    z-index: 5;
+    font-weight: 700;
+    margin: 0 0 10px;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.small-box p {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.small-box h3 {
+    font-size: 4.2rem;
+}
+
+.small-box .icon {
+    font-size: 7rem;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: rgba(0,0,0,.1);
+}
+
+@media (max-width: 767.98px) {
+    .small-box .icon {
+        display: none;
+    }
+}

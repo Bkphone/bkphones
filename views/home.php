@@ -1,7 +1,7 @@
 <?php
     $samsungs = array_chunk($params['samsungs'], 4);
     $iphones = array_chunk($params['iphones'], 4);
-    $watchs = array_chunk($params['watchs'], 4);
+    $xiaomis = array_chunk($params['xiaomis'], 4);
 ?>
 
 <link rel="stylesheet" href="/css/home/711d96f.css">
@@ -197,7 +197,7 @@
     </div>
     <div class="product-list-title is-flex is-flex-wrap-wrap">
         <a href="/menu" class="title">
-            <h2>SMARTWATCH NỔI BẬT NHẤT</h2>
+            <h2>ĐIỆN THOẠI XIAOMI NỔI BẬT NHẤT</h2>
         </a> 
         <a href="/menu" class="more-product">Xem tất cả</a>
         <div class="list-related-tag">
@@ -212,7 +212,7 @@
         <div class="product-list-swiper">
             <div class="product-list-filter is-flex is-flex-wrap-wrap p-2 swiper-container">
                 <?php
-                    foreach($watchs as $group) {
+                    foreach($xiaomis as $group) {
                         echo '<div class="swiper-wrapper" style="max-width: 1135px;">';
                         foreach($group as $element) {
                             echo '<div class="swiper-slide" style="width: 277px; margin-right: 10px; margin-top: 20px;">
