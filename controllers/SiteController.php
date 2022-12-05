@@ -58,7 +58,14 @@ class SiteController extends Controller
                 setcookie("member_login", $userId, time() + 3600 * 24 * 30);
 
                 if ($userModel->getRole() === 'admin') {
-                    return Application::$app->router->intended('/');
+                    $path = Application::$app->request->getPath();
+                    if ($path == "admin/login") {
+                        return Application::$app->response->redirect('/admin/products');
+                    } else {
+                        echo $path;
+                        // return Application::$app->router->intended('/'); 
+                    }
+
                 } else {
                     return Application::$app->router->intended('/');
                 }
@@ -107,5 +114,19 @@ class SiteController extends Controller
     {
         $this->setLayout('auth');
         return $this->render('payment_success');
+    }
+
+    public function admin(Request $request) {
+        $loginForm = new LoginForm();
+        if ($request->getMethod() == 'get') {
+            if (isset($_COOKIE["member_login"])) {
+                // return Application::$app->response->redirect('/admin/category');
+                $this->setLayout('admin');
+                return $this->render('adminIndex', [
+                    
+                ]);
+            }
+            return Application::$app->response->redirect('/admin/login');
+        }
     }
 }
