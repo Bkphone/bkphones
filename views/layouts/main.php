@@ -4,6 +4,7 @@ $path = str_replace($_SERVER['DOCUMENT_ROOT'], "", $path);
 
 header("Content-type: text/html; charset=utf-8");
 use app\core\Application;
+use app\models\ProductInCart;
 
 $user = null;
 if(!Application::$app->isGuest()) {
@@ -14,21 +15,21 @@ if(!Application::$app->isGuest()) {
 <html data-n-head-ssr lang="vi" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22vi%22%7D%7D">
 
 <head>
-    <title>BkphoneS - Điện thoại, laptop, tablet, phụ kiện chính hãng</title>
+    <title>Bkphone - Điện thoại, laptop, tablet, phụ kiện chính hãng</title>
     <meta data-n-head="ssr" name="description"
         content="Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, smarthome, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.">
     <meta data-n-head="ssr" charset="utf-8">
     <meta data-n-head="ssr" name="viewport" content="width=device-width, initial-scale=1">
-    <meta data-n-head="ssr" name="keywords" content="bkphones, cellphone, cellphone s, cell phones, cell phone">
+    <meta data-n-head="ssr" name="keywords" content="Bkphone, cellphone, cellphone s, cell phones, cell phone">
     <meta data-n-head="ssr" name="url" content="">
     <meta data-n-head="ssr" name="robots" content="INDEX,FOLLOW">
     <meta data-n-head="ssr" property="og:locale" content="vi_VN">
     <meta data-n-head="ssr" property="og:type" content="website">
-    <meta data-n-head="ssr" property="og:title" content="BkphoneS - Điện thoại, laptop, tablet, phụ kiện chính hãng">
+    <meta data-n-head="ssr" property="og:title" content="Bkphone - Điện thoại, laptop, tablet, phụ kiện chính hãng">
     <meta data-n-head="ssr" property="og:description"
         content="Hệ thống cửa hàng bán lẻ điện thoại, máy tính laptop, smartwatch, smarthome, thiết bị IT, phụ kiện chính hãng - Giá tốt, trả góp 0%, giao miễn phí.">
     <meta data-n-head="ssr" property="og:site_name"
-        content="BkphoneS - Điện thoại, laptop, tablet, phụ kiện chính hãng">
+        content="Bkphone - Điện thoại, laptop, tablet, phụ kiện chính hãng">
     <meta data-n-head="ssr" rel="canonical" content="">
     <meta data-n-head="ssr" property="fb:app_id" content="112980886043945">
     <link data-n-head="ssr" rel="icon" type="image/x-icon" href="/images/favicon.png">
@@ -41,6 +42,7 @@ if(!Application::$app->isGuest()) {
     <link rel="stylesheet" href="/css/home/63e594b.css">
     <link rel="stylesheet" href="/css/home/b10a813.css">
     <link rel="stylesheet" href="/css/home/6aa7e2b.css">
+    <link rel="stylesheet" href="/css/home/1a0550b.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
@@ -50,14 +52,14 @@ if(!Application::$app->isGuest()) {
             <div class="cps-page">
                 <div data-fetch-key="Header:0">
                     <header id="cpsHeader" class="cps-header sticky ">
-                        <div id="topBarHeader">
+                        <!-- <div id="topBarHeader">
                             <div class="is-flex is-justify-content-center is-align-content-center">
                                 <div class="pulsingButton mr-3"></div> 
                                 <a href="/mobile/apple/iphone-14.html" class="has-text-white text-topbar">
                                     iPhone 14 Series đặt hàng từ 7-13/10 - Đăng ký ngay!
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="cps-container">
                             <nav class="cps-navbar">
                                 <a href="/" class="navbar-brand">
@@ -71,7 +73,7 @@ if(!Application::$app->isGuest()) {
                                             <g transform="matrix(0.36 0 0 0.36 80 15.41)" id="9acab445-a213-434d-aa42-f94a34807fe5">
                                                 <text xml:space="preserve" font-family="Kanit-Regular" font-size="78" 
                                                     font-style="normal" font-weight="400" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; white-space: pre; font-family: 'Kanit', sans-serif;">
-                                                    <tspan x="-169.92" y="24.5">BkphoneS</tspan>
+                                                    <tspan x="-169.92" y="24.5">Bkphone</tspan>
                                                 </text>
                                             </g>
                                         </svg>
@@ -80,7 +82,7 @@ if(!Application::$app->isGuest()) {
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                             viewBox="0 0 120 120">
-                                            <title>Logo BkphoneS</title>
+                                            <title>Logo Bkphone</title>
                                             <g id="Layer_2" data-name="Layer 2">
                                                 <g id="Layer_1-2" data-name="Layer 1">
                                                 <image width="120" height="120"
@@ -91,7 +93,7 @@ if(!Application::$app->isGuest()) {
                                         </svg>
                                     </div>
                                 </a> 
-                                <a href="#" class="header-item btn-menu">
+                                <a href="/menu" class="header-item btn-menu">
                                     <div class="about__box-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.99 26.99">
                                             <defs>
@@ -116,7 +118,7 @@ if(!Application::$app->isGuest()) {
                                         </svg>
                                     </div>
                                     <div class="about__box-content">
-                                        <p>Danh mục điện thoại</p>
+                                        <p class="title">Danh mục<br>điện thoại</p>
                                     </div>
                                 </a>
                                 <div class="box-search cps-navbar__search">
@@ -142,14 +144,14 @@ if(!Application::$app->isGuest()) {
                                         <p class="title">Gọi mua hàng<br> <strong>1800.2097</strong></p>
                                     </div>
                                 </a> 
-                                <a target="_blank" rel="noopener" href="/stores" class="header-item about-store">
+                                <!-- <a target="_blank" rel="noopener" href="/stores" class="header-item about-store">
                                     <div class="about__box-icon">
                                         <img src="/images/home/location.svg">
                                     </div>
                                     <div class="about__box-content">
                                         <p class="title">Cửa hàng<br>gần bạn</p>
                                     </div>
-                                </a> 
+                                </a>  -->
                                 <a target="_blank" rel="noopener" href="/lookup-orders" class="header-item about-delivery-tracking">
                                     <div class="about__box-icon">
                                         <img src="/images/home/order-lookup.svg" alt="Tra cứu đơn hàng">
@@ -164,7 +166,15 @@ if(!Application::$app->isGuest()) {
                                     </div>
                                     <div class="about__box-content">
                                         <p class="title">Giỏ <br>hàng</p> 
-                                        <span id="items_in_cart">0</span>
+                                        <span id="items_in_cart">
+                                            <?php 
+                                            $quantity = 0;
+                                            if(isset($user)){
+                                                $quantity = ProductInCart::getTotalQuantity($user->id);
+                                            }
+                                            echo (isset($quantity))? $quantity: 0;
+                                            ?>
+                                        </span>
                                     </div>
                                 </a>
                                 <a href="/login" class="header-item about-5 about-smember cta-smember">
@@ -217,12 +227,12 @@ if(!Application::$app->isGuest()) {
                                         <div class="pay-gate-way__content">
                                             <ul class="list-link">
                                                 <li class="link border icon-cps rounded">
-                                                    <a href="/sforum/huong-dan-toan-bang-zalopay-khi-mua-hang-tren-website-bkphones">
+                                                    <a href="/sforum/huong-dan-toan-bang-zalopay-khi-mua-hang-tren-website-Bkphone">
                                                         <img src="/images/logo/payment/zalopay-logo.png" alt="Zalopay">
                                                     </a>
                                                 </li>
                                                 <li class="link border icon-cps rounded">
-                                                    <a href="/sforum/huong-dan-su-dung-vnpay-qrcode-tren-website-bkphones">
+                                                    <a href="/sforum/huong-dan-su-dung-vnpay-qrcode-tren-website-Bkphone">
                                                         <img src="/images/logo/payment/vnpay-logo.png" alt="Vnpay">
                                                     </a>
                                                 </li>
@@ -248,7 +258,7 @@ if(!Application::$app->isGuest()) {
                                                     (8h00 - 22h00)
                                                 </div>
                                             </li>
-                                            <li class="link">
+                                            <!-- <li class="link">
                                                 <div>Gọi bảo hành <a href="tel:18002064"><strong>1800.2064</strong></a>
                                                     (8h00 - 21h00)
                                                 </div>
@@ -257,10 +267,10 @@ if(!Application::$app->isGuest()) {
                                                 <div>Gọi khiếu nại <a href="tel:18002063"><strong>1800.2063</strong></a>
                                                     (8h00 - 21h30)
                                                 </div>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
-                                    <div class="box-two__warranty">
+                                    <!-- <div class="box-two__warranty">
                                         <div class="warranty-logo">
                                             <a href="#" class="warranty-logo-dtv">
                                                 <div class="box-left">
@@ -279,7 +289,7 @@ if(!Application::$app->isGuest()) {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="column is-one-quarter-desktop is-half-tablet is-full-mobile top__box-three">
                                     <div class="box-three__search">
@@ -289,26 +299,26 @@ if(!Application::$app->isGuest()) {
                                                     Mua hàng và thanh toán Online
                                                 </a>
                                             </li>
-                                            <li class="link">
+                                            <!-- <li class="link">
                                                 <a target="_blank" rel="noopener" href="/tra-gop-online-the-tin-dung">Mua
                                                     hàng trả góp Online
                                                 </a>
-                                            </li>
+                                            </li> -->
                                             <li class="link">
                                                 <a target="_blank" rel="noopener" href="/lookup-orders">
                                                     Tra thông tin đơn hàng
                                                 </a>
                                             </li>
-                                            <li class="link">
+                                            <!-- <li class="link">
                                                 <a target="_blank" rel="noopener" href="/bkmember">
                                                     Tra điểm Smember
                                                 </a>
-                                            </li>
-                                            <li class="link">
+                                            </li> -->
+                                            <!-- <li class="link">
                                                 <a target="_blank" rel="noopener"href="/sua-chua-phan-cung.html">
                                                     Dịch vụ bảo hành điện thoại
                                                 </a>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
