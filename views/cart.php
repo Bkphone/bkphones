@@ -2,36 +2,28 @@
 
 <?php
     use app\models\ProductInCart;
+    use app\controllers\CartController;
 
     // Updating Product Quantities
-    if (isset($_POST['Update'])) {
-        // Loop through the post data so we can update the quantities for every product in cart
-        foreach ($_POST as $k => $v) {
-            if (strpos($k, 'quantity') !== false && is_numeric($v)) {
-                $id = str_replace('quantity-', '', $k);
-                $quantity = (int)$v;
-                ProductInCart::changeQuantity($id,$quantity);
-            }
-        }
-        header('location: cart');
-        exit;
+    if (isset($_POST['update'])) {
+        CartController::update($_POST);
     }    
 
     //Delete Product from cart
-    if (isset($_POST['Remove'])) {
-        $value = $_POST['Remove'];
-        ProductInCart::removeFromCart($value);
-        header('location: cart');
-        exit;
-    }    
+    if (isset($_POST['remove'])) {
+        CartController::remove($_POST['remove']);
+    }   
+    
+    // if (isset($_POST['remove'])) {
+    //     CartController::order($_POST['remove']);
+    // }
 ?>
 
 <div class="container">
-    <div class="page_name">
-        <h2>GIỎ HÀNG CỦA BẠN</h2>
-    </div>
+    <h2 class="title">GIỎ HÀNG CỦA BẠN</h2>
+
     <?php
-        if(empty($params['ProductDetails'])){
+        if(!ProductInCart::getTotalQuantity($params['userID'])){
     ?>
     <div class="message">
         <img src="https://th.bing.com/th/id/R.68df6c5450dd68c1e11bb687e315400a?rik=RHk6aVd8%2fIghoA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_56611.png&ehk=t%2b7%2fprTGfl6Dgk%2bQc6Zdy%2bOzt3kAc0mB0NodMv9pBKo%3d&risl=&pid=ImgRaw&r=0" alt="Sad-face">
@@ -55,8 +47,7 @@
                 </div>
                 <div class="product-detail">
                     <div class="product-remove">
-                        <button id="remove-<?=$product->id?>" type="submit" form="cart-form" name ="Remove" value="<?=$product->id?>">X</button>
-                        <!-- <input id="remove-<?=$product->id?>" type="submit" name="Remove" value="X" /> -->
+                        <button id="remove-<?=$product->id?>" type="submit" form="cart-form" name ="remove" value="<?=$product->id?>">X</button>
                     </div>
                     <div class="product-name"><h3><?= $product->name ?></h3></div>
                     <div class="price">
@@ -85,10 +76,35 @@
                 <h2 class="money-show"><?=$total_money?>₫</h2>
             </div>
             <div class="form-button">
-                <input id="update-button" type="submit" name="Update" value="CẬP NHẬT GIỎ HÀNG" />
-                <input id="order-button" type="submit" name="PlaceOrder" value="TIẾN HÀNH ĐẶT HÀNG" />
+                <button id="update-button" type="submit" form="cart-form" name ="update">CẬP NHẬT GIỎ HÀNG</button>
             </div>
         </div>
     </form>
+
+    <?php $form = app\core\Form\Form::begin('', "post") ?>
+    <div class="d-flex justify-content-center h-100">
+        <div class="order-card">
+            <div class="card-header">
+                <h3 class="title">TIẾN HÀNH ĐẶT HÀNG</h3>
+            </div>
+            <div class="card-body">
+                <?php echo $form->field($model, 'username') ?>
+                <?php echo $form->field($model, 'email') ?>
+                <?php echo $form->field($model, 'address') ?>
+                <?php echo $form->field($model, 'order_description') ?>
+                <div class="form-group">
+                    <button type="submit" class="btn float-right login_btn" name="order">Đặt hàng</button>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    <a href="/"><p>Chọn thêm sản phẩm khác?</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php app\core\form\Form::end() ?>
+</div>
+
     <?php } ?>
 </div>

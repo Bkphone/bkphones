@@ -166,7 +166,13 @@ if(!Application::$app->isGuest()) {
                                     <div class="about__box-content">
                                         <p class="title">Giỏ <br>hàng</p> 
                                         <span id="items_in_cart">
-                                        <?php echo ProductInCart::getTotalQuantity();?>
+                                            <?php 
+                                            $quantity = 0;
+                                            if(isset($user)){
+                                                $quantity = ProductInCart::getTotalQuantity($user->id);
+                                            }
+                                            echo (isset($quantity))? $quantity: 0;
+                                            ?>
                                         </span>
                                     </div>
                                 </a>

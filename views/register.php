@@ -1,4 +1,4 @@
-<div class="card-regester">
+<div class="card-register">
     <div class="card-header">
         <h1>Đăng ký</h1>
     </div>

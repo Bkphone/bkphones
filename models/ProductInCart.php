@@ -76,15 +76,9 @@ class ProductInCart extends DBModel{
         ];
     }
 
-    public function save()
-    {
-        $this->id = uniqid();
-        return parent::save();
-    }
-
-    public static function getTotalQuantity(){
+    public static function getTotalQuantity($userId){
         $db = Database::getInstance();
-        $result = $db->query("SELECT SUM(quantity) AS value_sum FROM productincart;");
+        $result = $db->query("SELECT SUM(quantity) FROM productincart WHERE user_id = '$userId' AND order_id='';");
         $value = $result->fetch();
         return $value[0]; 
     }
@@ -92,14 +86,14 @@ class ProductInCart extends DBModel{
     public static function removeFromCart($key){
         if($key){
             $db = Database::getInstance();
-            $db->query("DELETE FROM productincart WHERE product_id = '$key';");
+            $db->query("DELETE FROM productincart WHERE product_id = '$key' AND order_id='';");
         }
     }
 
     public static function changeQuantity($key, $value){
         $db = Database::getInstance();
         if($key){
-            $db->query("UPDATE productincart SET quantity = $value WHERE product_id = '$key';");
+            $db->query("UPDATE productincart SET quantity = $value WHERE product_id = '$key' AND order_id='';");
         }
     }
 
@@ -107,7 +101,7 @@ class ProductInCart extends DBModel{
         $list = [];
         $db = Database::getInstance();
         if($id){
-            $req = $db->query("SELECT * FROM productincart  WHERE user_id='$id';");
+            $req = $db->query("SELECT * FROM productincart  WHERE user_id='$id' AND order_id='';");
             foreach($req->fetchAll() as $item){
                 $list[] = new ProductInCart($item['user_id'], $item['product_id'], $item['quantity'], $item['price'], $item['order_id']);
             }
@@ -119,7 +113,7 @@ class ProductInCart extends DBModel{
         $list = [];
         $db = Database::getInstance();    
         if($id){
-            $req = $db->query("SELECT * FROM products WHERE id IN (SELECT product_id FROM productincart WHERE user_id='$id');");
+            $req = $db->query("SELECT * FROM products WHERE id IN (SELECT product_id FROM productincart WHERE user_id='$id' AND order_id='');");
             foreach($req->fetchAll() as $item){
                 $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                 $item['price_show'], $item['price_through'], $item['discount'], 
