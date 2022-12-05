@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\core\Controller;
 use app\models\Product;
 use app\middlewares\AuthMiddleWare;
+use app\core\Application;
+use app\core\Request;
 
 class MenuController extends Controller
 {
@@ -32,5 +34,16 @@ class MenuController extends Controller
         return $this->render('menu', [
             'products' => $products
         ]);
+    }
+
+    public function detail(Request $request)
+    {
+        if ($request->getMethod() === 'get') {
+            $id = Application::$app->request->getParam('id');
+            $productModel = Product::getProductDetail($id);
+            return $this->render('product_detail', [
+                'productModel' => $productModel
+            ]);
+        }
     }
 }
