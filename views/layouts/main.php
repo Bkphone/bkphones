@@ -41,6 +41,7 @@ if(!Application::$app->isGuest()) {
     <link rel="stylesheet" href="/css/home/63e594b.css">
     <link rel="stylesheet" href="/css/home/b10a813.css">
     <link rel="stylesheet" href="/css/home/6aa7e2b.css">
+    <link rel="stylesheet" href="/css/home/1a0550b.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
@@ -91,7 +92,7 @@ if(!Application::$app->isGuest()) {
                                         </svg>
                                     </div>
                                 </a> 
-                                <a href="#" class="header-item btn-menu">
+                                <a href="/menu" class="header-item btn-menu">
                                     <div class="about__box-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.99 26.99">
                                             <defs>
