@@ -1,0 +1,140 @@
+.block-box-price .box-info__installment {
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 4px 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #d70018;
+    background-color: #fef2f2;
+    color: #d70018;
+    margin-bottom: 10px !important
+}
+
+.block-box-price .box-old-product-warranty {
+    grid-gap: 10px;
+    gap: 10px
+}
+
+.block-box-price .box-old-product-warranty .old-product-warranty-tag {
+    font-size: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px
+}
+
+.block-box-price .box-info__box-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end
+}
+
+.block-box-price .box-info__box-price .product__price--show {
+    display: inline-block;
+    margin-bottom: 10px !important;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #d70018
+}
+
+.block-box-price .box-info__box-price .product__price--through {
+    display: inline-block;
+    margin: 0 0 10px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: line-through;
+    color: #707070;
+    position: relative;
+    top: 2px
+}
+
+.block-box-price .box-info__box-price .product__price--percent {
+    width: 80px;
+    height: 26px;
+    margin: 0 0 10px 10px;
+    background-color: #d70018;
+    border-radius: 3px
+}
+
+.block-box-price .box-info__box-price .product__price--percent p {
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    width: 100%;
+    margin: 5px 0 0
+}
+
+@media only screen and (min-width:769px)and (max-width:990px) {
+    .block-box-price .box-info__box-price .product__price--show {
+        font-size: 16px
+    }
+
+    .block-box-price .box-info__box-price .product__price--through {
+        font-size: 12px
+    }
+
+    .block-box-price .box-info__box-price .product__price--percent {
+        width: 70px;
+        height: 25px
+    }
+
+    .block-box-price .box-info__box-price .product__price--percent p {
+        font-size: 10px
+    }
+}
+
+@media only screen and (min-width:541px)and (max-width:768px) {
+    .block-box-price .box-info__box-price {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end
+    }
+
+    .block-box-price .box-info__box-price .product__price--show {
+        font-size: 18px
+    }
+
+    .block-box-price .box-info__box-price .product__price--through {
+        font-size: 14px
+    }
+
+    .block-box-price .box-info__box-price .product__price--percent-detail {
+        font-size: 11px
+    }
+}
+
+@media only screen and (max-width:540px) {
+    .block-box-price {
+        margin-top: 0
+    }
+
+    .block-box-price .box-info__installment {
+        margin-bottom: 5px !important
+    }
+
+    .block-box-price .box-info__box-price {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end
+    }
+
+    .block-box-price .box-info__box-price .product__price--show {
+        font-size: 18px
+    }
+
+    .block-box-price .box-info__box-price .product__price--through {
+        margin: 0 0 10px 5px;
+        font-size: 12px
+    }
+
+    .block-box-price .box-info__box-price .product__price--percent {
+        width: 70px;
+        height: 25px
+    }
+
+    .block-box-price .box-info__box-price .product__price--percent-detail {
+        font-size: 9px;
+        line-height: 1.5;
+        margin: 3px 0 0
+    }
+}
