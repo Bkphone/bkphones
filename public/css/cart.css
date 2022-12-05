@@ -1,0 +1,216 @@
+.container .page_name {
+    position: relative;
+    width: 520px;
+    height: 45px;
+    margin: auto;
+    text-align: center;
+    line-height: 45px;
+    margin-bottom: 5px;
+}
+
+.container .page_name h2{
+    font-size: 24px;
+    color: #dc143c;
+    font-weight: 700;
+}
+
+.container .message{
+    background-color: white;
+    /* margin: auto; */
+    text-align: center;
+}
+
+.container .message img{
+    width: 150px;
+    height: 150px;
+    margin: 100px 0;
+}
+
+.container .message h2{
+    font-size: 40px;
+    font-weight: 600;
+    color: #969696;
+}
+
+.container .message a{
+    margin: 100px 0;
+    background-color: #d70018;
+    border-color: #d70018;
+    border-radius: 5px;
+    color: white!important;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin-bottom: 5px;
+    text-decoration: none !important;
+}
+
+.container .product-container-box{
+    max-width: 620px;
+    min-height: 250px;
+    border-radius: 10px;
+    border-color: #969696;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    box-shadow: 4px 3px 8px 1px #b4c6d0;
+}
+
+.container input:hover{
+    cursor: pointer;
+}
+
+.container .product-container-box .product-detail .product-remove{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+.container .product-container-box .product-detail .product-remove button{
+    background-color: white;
+    border: none;
+}
+
+.container .product-container-box .product-detail .product-remove button:hover{
+    background-color: white;
+    border: none;
+    color:#d70018;
+}
+
+.container .product-container-box .product-display{
+    position: relative;
+}
+
+.container .product-container-box .product-display .product-image{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    max-width: 220px;
+    height: auto;
+    padding: 10px;
+}
+
+.container .product-container-box .product-display .product-image img{
+    width: 200px;
+    height: 200px;
+}
+
+.container .product-container-box .product-display .product-detail{
+    position: absolute;
+    min-height: 1em;
+    left: 230px;
+    top: 0px;
+}
+
+.container .product-container-box .product-display .product-detail .product-name{
+    color: black;
+    display: inline-block;
+    font-weight: 600;
+}
+
+
+.container .product-container-box .product-display .product-detail .current-price{
+    display: inline-block;
+    font-size: larger;
+    color: #d70018;
+}
+
+.container .product-container-box .product-display .product-detail .old-price{
+    display: inline-block;
+    color: #969696;
+    text-decoration-line: line-through;
+}
+
+.container .product-container-box .product-display .product-detail .discount{
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #d70018;
+    text-align: center;
+    color: white;
+    max-width: 80px;
+}
+
+.container .product-container-box .product-display .product-detail .description-box{
+    position: relative;
+    --max-line: 3;
+    --line-height: 1.4;
+
+    max-height: calc(var(--max-line) * 1em * var(--line-height));
+    line-height: var(--line-height);
+    overflow: hidden;
+
+    padding: 10px;
+    background-color: #eff1f2;
+    border-radius: 5px;
+    min-height: 100px;
+    width: 370px;
+    margin-top: 10px;
+}
+
+.container .product-container-box .product-display .product-detail .description-box::before{
+    content: "";
+    position: absolute;
+    height: calc(1em*var(--line-height));
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, #eff1f2);
+}
+
+.container .bottom-box{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 650px;
+    border-radius: 10px;
+    border-color: #969696;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    box-shadow: 4px 3px 8px 1px #b4c6d0;
+}
+
+.container .bottom-box .total-money{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.container .bottom-box .total-money .money-show{
+    position: absolute;
+    color:#d70018;
+    right: 10px;
+    top: 10px;
+}
+
+.container .bottom-box .form-button{
+    width: 100%;
+}
+
+.container .bottom-box .form-button #update-button{
+    width: 100%;
+    background-color: #d70018;
+    border-color: #d70018;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.container .bottom-box .form-button #order-button{
+    width: 100%;
+    border-color: #d70018;
+    border-radius: 5px;
+    color: #d70018;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
