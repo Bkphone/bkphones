@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\core\Database;
 use app\core\DBModel;
+use app\models\ProductInCart;
 
 class Order extends DBModel{
     public string $id;
@@ -14,7 +15,7 @@ class Order extends DBModel{
     public string $address;
     public string $order_description;
     public string $price;
-    public string $createDate;
+    public string $created_at;
     public string $payment_status;
 
     public function __construct(
@@ -26,7 +27,7 @@ class Order extends DBModel{
         $address = '',
         $order_description = '',
         $price = '',
-        $createDate = '',
+        $created_at = '',
         $payment_status = ''
     )
     {
@@ -38,7 +39,7 @@ class Order extends DBModel{
         $this->address = $address;
         $this->order_description = $order_description;
         $this->price = $price;
-        $this->createDate = $createDate;
+        $this->created_at = $created_at;
         $this->payment_status = $payment_status;
     }
     public function setId($id) { $this->id = $id; }
@@ -65,8 +66,8 @@ class Order extends DBModel{
     public function setPrice($price) { $this->price = $price; }
     public function getPrice() { return $this->price; }
 
-    public function setCreateDate($createDate) { $this->createDate = $createDate; }
-    public function getCreateDate() { return $this->createDate; }
+    public function setCreated_at($created_at) { $this->created_at = $created_at; }
+    public function getCreated_at() { return $this->created_at; }
 
     public function setPayment_status($payment_status) { $this->payment_status = $payment_status; }
     public function getPayment_status() { return $this->payment_status; }
@@ -78,7 +79,7 @@ class Order extends DBModel{
 
     public function attributes(): array
     {
-        return ['id', 'user_id', 'order_status', 'username', 'email', 'address', 'order_description','price', 'createDate','payment_status'];
+        return ['id', 'user_id', 'order_status', 'username', 'email', 'address', 'order_description','price', 'created_at','payment_status'];
     }
 
     public function labels(): array
@@ -92,7 +93,7 @@ class Order extends DBModel{
             'address' => 'Địa chỉ',
             'order_description' => 'Thông tin chi tiết',
             'price' => 'Số tiền phải trả',
-            'createDate' => 'Ngày tạo đơn',
+            'created_at' => 'Ngày tạo đơn',
             'payment_status' => 'Tình trạng thanh toán', 
         ];
     }
@@ -112,16 +113,25 @@ class Order extends DBModel{
     }
 
     public function create()
-    {
+    {   
         $this->id = uniqid();
         $this->order_status = 'Đang chờ duyệt';
-        $this->createDate = date("y-d-m");  
+        $this->created_at = date_format(date_create(),"Y-m-d H:i:s"); 
         $this->payment_status = 'Chưa thanh toán';
 
         $db = Database::getInstance();
         $this->price = $db->query("SELECT sum(quantity*price) FROM productincart WHERE user_id='$this->user_id' AND order_id ='';")->fetch()[0];
-        // //Delete products from cart;
+        //Delete products from cart;
         $db->query("UPDATE productincart SET order_id = '$this->id' WHERE user_id='$this->user_id' AND order_id ='';");
+
+        //Update price of product at the time of purchase
+        $req = $db->query("SELECT * FROM productincart WHERE order_id = '$this->id';");
+        foreach ($req->fetchAll() as $item) {
+            $id = $item['product_id'];
+            $product = $db->query("SELECT * FROM products WHERE id = '$id';")->fetchAll()[0];
+            $price = $product['price_through'];
+            $db->query("UPDATE productincart SET price = '$price' WHERE product_id = '$id';");
+        }
 
         $db->query("INSERT INTO orders VALUES (
             '$this->id',
@@ -132,7 +142,7 @@ class Order extends DBModel{
             '$this->address',
             '$this->order_description',
             $this->price,
-            '$this->createDate',
+            '$this->created_at',
             '$this->payment_status'
         );");
     }
@@ -150,18 +160,18 @@ class Order extends DBModel{
         $order->email = $item['email'];
         $order->address = $item['address'];
         $order->order_description = $item['order_description'];
-        $order->createDate = $item['createDate'];
+        $order->created_at = $item['created_at'];
         return $order;
     }
 
     public static function getAllOrder($id){
         $db = Database::getInstance();
-        $req = $db->query("SELECT * FROM orders WHERE user_id = '$id' ORDER BY createDate;");
+        $req = $db->query("SELECT * FROM orders WHERE user_id = '$id' ORDER BY created_at;");
         $list = [];
         if($id){
             foreach($req->fetchAll() as $item){
                 $list[] = new Order($item['id'], $item['user_id'], $item['order_status'], $item['username'],
-                                    $item['email'],$item['address'],$item['order_description'],$item['price'],$item['createDate'],$item['payment_status']);
+                                    $item['email'],$item['address'],$item['order_description'],$item['price'],$item['created_at'],$item['payment_status']);
             }
         }
         return $list;

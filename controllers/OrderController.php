@@ -10,7 +10,7 @@ use app\core\Request;
 class OrderController extends Controller{
     public function __construct()
     {
-        $this->registerMiddleware(new AuthMiddleWare(['cart']));
+        $this->registerMiddleware(new AuthMiddleWare(['order']));
     }
 
     public function order(){
