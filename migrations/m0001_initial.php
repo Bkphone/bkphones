@@ -88,6 +88,34 @@ class m0001_initial
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
             -- ---------------------------------------------------------
+
+            --
+            -- Table structure for table `productincart`
+            --
+            CREATE TABLE `productincart` (
+                `user_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+                `product_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+                `quantity` int(4) NOT NULL DEFAULT 1,
+                `price` int(12) NOT NULL DEFAULT 1,
+                `order_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL DEFAULT ''
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+            -- ---------------------------------------------------------
+
+            --
+            -- Table structure for table `orders`
+            --
+            CREATE TABLE orders(
+                `id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+                `user_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+                `order_status` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL DEFAULT 'Đang chờ duyệt',
+                `username` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+                `email` varchar(100) NOT NULL,
+                `address` varchar(500) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+                `order_description` varchar(500) COLLATE utf8mb4_vietnamese_ci NOT NULL DEFAULT '',
+                `price`int(12) DEFAULT 0,
+                `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+                `payment_status` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL DEFAULT 'Chưa thanh toán'
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
             --
             -- Indexes for table `users`
             --
@@ -111,6 +139,18 @@ class m0001_initial
             -- Indexes for table `stores`
             --
             ALTER TABLE `stores`
+            ADD PRIMARY KEY (`id`);
+
+            --
+            -- Indexes for table `productincart`
+            --
+            ALTER TABLE `productincart`
+            ADD PRIMARY KEY (`user_id`,`product_id`,`order_id`);
+
+            --
+            -- Indexes for table `orders`
+            --
+            ALTER TABLE `orders`
             ADD PRIMARY KEY (`id`);
         ";
         $db->pdo->exec($sql);
