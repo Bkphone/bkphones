@@ -37,7 +37,7 @@
         $total_money=0;
         foreach($params['ProductDetails'] as $product){
             $item = $params['ProductInCarts'][$STT];
-            $money = $item->price*$item->quantity;  
+            $money = $product->price_through*$item->quantity;  
             $total_money += $money;
     ?>
         <div class="product-container-box">
@@ -51,10 +51,10 @@
                     </div>
                     <div class="product-name"><h3><?= $product->name ?></h3></div>
                     <div class="price">
-                        <div class="current-price"><h3><?= $product->price_show ?>₫</h3></div>
-                        <div class="old-price"><h3><?= $product->price_through ?>₫</h3></div>
+                        <div class="current-price"><h3><?php echo number_format($product->price_through, 0, ',', '.')?>₫</h3></div>
+                        <div class="old-price"><h3><?php echo number_format($product->price_show, 0, ',', '.')?>₫</h3></div>
                         <div class="discount">
-                            <h3>Giảm <?= round(($product->price_through-$product->price_show)/$product->price_show*100)?>%</h3>
+                            <h3>Giảm <?= round(($product->price_show-$product->price_through)/$product->price_through*100)?>%</h3>
                         </div>
                     </div>
                     <div class="product-quantity">
@@ -73,7 +73,7 @@
         <div class="bottom-box">
             <div class="total-money">
                 <h2>Tổng tiền tạm tính</h2>
-                <h2 class="money-show"><?=$total_money?>₫</h2>
+                <h2 class="money-show"><?php echo number_format($total_money, 0, ',', '.')?>₫</h2>
             </div>
             <div class="form-button">
                 <button id="update-button" type="submit" form="cart-form" name ="update">CẬP NHẬT GIỎ HÀNG</button>

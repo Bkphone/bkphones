@@ -83,6 +83,19 @@ class ProductInCart extends DBModel{
         return $value[0]; 
     }
 
+    public static function addToCart($user_id, $product_id){
+        $db = Database::getInstance();
+        $req = $db->query("SELECT * FROM productincart WHERE product_id = '$product_id' AND user_id = '$user_id' and order_id='';");
+        if($req->fetchALL()[0] !== NULL){
+            $db->query("UPDATE productincart SET quantity = quantity +1 WHERE product_id = '$product_id' AND user_id = '$user_id' and order_id='';");
+        }else{
+            $req = $db->query("SELECT * FROM products WHERE id = '$product_id';");
+            $item = $req->fetchALL()[0];
+            $price = $item['price_through'];
+            $db->query("INSERT INTO productincart VALUES ('$user_id','$product_id',1,$price,'');");
+        }
+    }
+
     public static function removeFromCart($key){
         if($key){
             $db = Database::getInstance();
@@ -109,7 +122,7 @@ class ProductInCart extends DBModel{
         return $list;
     }
 
-    public static function getProductDetail($id=null){
+    public static function getProductDetail($id){
         $list = [];
         $db = Database::getInstance();    
         if($id){

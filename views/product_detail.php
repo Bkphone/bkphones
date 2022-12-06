@@ -38,10 +38,14 @@
                 </div>
             </div>
             <div class="area_order">
-                <a class="buy_now" onclick="themVaoGioHang(maProduct, nameProduct);">
-                    <b><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</b>
-                    <p>Giao trong 1 giờ hoặc nhận tại cửa hàng</p>
-                </a>
+                <form action="" method="POST">
+                    <button type="submit" name ="addToCart">
+                        <a class="buy_now" onclick="themVaoGioHang(maProduct, nameProduct);">
+                            <b><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</b>
+                            <p>Giao trong 1 giờ hoặc nhận tại cửa hàng</p>
+                        </a>
+                    </button>
+                </form>
             </div>
         </div>
         <div class="info_product">
