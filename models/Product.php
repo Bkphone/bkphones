@@ -301,7 +301,7 @@ class Product extends DBModel
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
                             $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
-                            $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery'])
+                            $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
         }
 
         return $list;
