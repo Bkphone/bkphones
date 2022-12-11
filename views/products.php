@@ -19,7 +19,7 @@
                 <tr>
                     <th scope="row"><?php echo $i + 1 ?></td>
                     <td style="padding:5px;width:100px;">
-                        <img src="/<?php echo $product->image_url ?>" alt="Product-Image" style="width: 100%;">
+                        <img src=<?= str_contains($product->image_url, 'http') ? $product->image_url : "/" . $product->image_url ?> alt="Product-Image" style="width: 100%;">
                     </td>
                     <td ><?php echo $product->name ?></td>
                     <td><?php echo $product->price_show ?></td>
