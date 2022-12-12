@@ -5,6 +5,8 @@ use app\controllers\SiteController;
 use app\core\Application;
 use app\controllers\ProfileController;
 use app\controllers\ProductController;
+use app\controllers\AdminController;
+use app\controllers\DashboardController;
 use app\controllers\MenuController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
@@ -54,6 +56,7 @@ $app->router->get('/admin/login', [SiteController::class, 'login']);
 $app->router->get('/admin/users', [UserController::class, 'index']);
 $app->router->get('/admin/products', [ProductController::class, 'index']);
 $app->router->get('/admin/category', [CategoryController::class, 'index']);
+$app->router->get('/admin/orders', [OrderController::class, 'index']);
 
 // store
 $app->router->get('/admin/stores/delete', [StoreController::class, 'delete']);
@@ -72,6 +75,8 @@ $app->router->get('/admin/users/edit', [UserController::class, 'update']);
 $app->router->get('/admin/users/create', [UserController::class, 'create']);
 $app->router->get('/admin/users/details', [UserController::class, 'details']);
 $app->router->get('/admin/users/edit/password', [UserController::class, 'password']);
+
+
 
 $app->router->post('/admin/users/delete', [UserController::class, 'delete']);
 $app->router->post('/admin/users/edit', [UserController::class, 'update']);
@@ -94,5 +99,20 @@ $app->router->get('/admin/category/delete', [CategoryController::class, 'delete'
 $app->router->get('/product', [MenuController::class, 'detail']);
 $app->router->post('/product', [MenuController::class, 'detail']);
 
+// manage oders
+$app->router->get('/admin/orders/delete', [OrderController::class, 'delete']);
+$app->router->get('/admin/orders/edit', [OrderController::class, 'update']);
+$app->router->get('/admin/orders/create', [OrderController::class, 'create']);
+$app->router->get('/admin/orders/details', [OrderController::class, 'details']);
+
+
+
+
+$app->router->post('/admin/orders/delete', [OrderController::class, 'delete']);
+$app->router->post('/admin/orders/edit', [OrderController::class, 'update']);
+$app->router->post('/admin/orders/create', [OrderController::class, 'create']);
+$app->router->post('/admin/orders/details', [OrderController::class, 'details']);
+
+    
 // run
 $app->run();

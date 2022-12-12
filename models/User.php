@@ -134,7 +134,7 @@ class User extends UserModel
         return $user;
     }
 
-    public function updateProfile($user)
+    public function updateProfile(User $user)
     {
         $statement = self::prepare(
             "UPDATE users 
@@ -142,7 +142,8 @@ class User extends UserModel
                 firstname = '$user->firstname', 
                 lastname = '$user->lastname',
                 phone_number = '$user->phone_number',
-                address = '$user->address'
+                address = '$user->address',
+                role = '$user->role'
             WHERE id = '$user->id';
             "
         );
@@ -151,14 +152,14 @@ class User extends UserModel
     }
 
     public function update(User $user)
-    {
+    {   $user->password = password_hash($user->password, PASSWORD_DEFAULT);
         $statement = self::prepare(
             "UPDATE users 
             SET 
                 firstname = '$user->firstname', 
                 lastname = '$user->lastname',
                 email = '$user->email',
-                password = 'password_hash($user->password, PASSWORD_DEFAULT)',
+                password = '$user->password',
                 phone_number = '$user->phone_number',
                 role = '$user->role',
                 address = '$user->address'
@@ -177,4 +178,6 @@ class User extends UserModel
         $stmt->execute([$this->id]);
         return true;     
     }   
+
+    
 }
