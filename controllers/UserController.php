@@ -27,7 +27,7 @@ class UserController extends Controller{
     {
         $users = User::getAllUsers();
         $this->setLayout('admin');
-        return $this->render('/admin/users', [
+        return $this->render('users', [
             'users' => $users
         ]);
     }
