@@ -120,17 +120,17 @@ class Order extends DBModel{
         $this->payment_status = 'Chưa thanh toán';
 
         $db = Database::getInstance();
-        $this->price = $db->query("SELECT sum(quantity*price) FROM productincart WHERE user_id='$this->user_id' AND order_id ='';")->fetch()[0];
+        $this->price = $db->query("SELECT sum(quantity*price) FROM product_in_cart WHERE user_id='$this->user_id' AND order_id ='';")->fetch()[0];
         //Delete products from cart;
-        $db->query("UPDATE productincart SET order_id = '$this->id' WHERE user_id='$this->user_id' AND order_id ='';");
+        $db->query("UPDATE product_in_cart SET order_id = '$this->id' WHERE user_id='$this->user_id' AND order_id ='';");
 
         //Update price of product at the time of purchase
-        $req = $db->query("SELECT * FROM productincart WHERE order_id = '$this->id';");
+        $req = $db->query("SELECT * FROM product_in_cart WHERE order_id = '$this->id';");
         foreach ($req->fetchAll() as $item) {
             $id = $item['product_id'];
             $product = $db->query("SELECT * FROM products WHERE id = '$id';")->fetchAll()[0];
             $price = $product['price_through'];
-            $db->query("UPDATE productincart SET price = '$price' WHERE product_id = '$id';");
+            $db->query("UPDATE product_in_cart SET price = '$price' WHERE product_id = '$id';");
         }
 
         $db->query("INSERT INTO orders VALUES (
