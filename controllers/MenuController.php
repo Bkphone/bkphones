@@ -7,6 +7,7 @@ use app\models\Product;
 use app\middlewares\AuthMiddleWare;
 use app\core\Application;
 use app\core\Request;
+use app\models\ProductInCart;
 
 class MenuController extends Controller
 {
@@ -41,6 +42,17 @@ class MenuController extends Controller
         if ($request->getMethod() === 'get') {
             $id = Application::$app->request->getParam('id');
             $productModel = Product::getProductDetail($id);
+            return $this->render('product_detail', [
+                'productModel' => $productModel
+            ]);
+        }
+        if ($request->getMethod() === 'post'){
+            $this->registerMiddleware(new AuthMiddleWare(['cart']));
+            $userID = Application::$app->session->get('user');
+            $id = Application::$app->request->getParam('id');
+            $productModel = Product::getProductDetail($id);
+            ProductInCart::addToCart($userID, $id);
+
             return $this->render('product_detail', [
                 'productModel' => $productModel
             ]);

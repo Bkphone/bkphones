@@ -28,7 +28,8 @@ th, td{
 }
 
 thead {
-    background-color: #333;
+    /* background-color: #333; */
+    background-color: #d70018;
     font-size: 0.875rem;
 	text-transform: uppercase;
 	letter-spacing: 2%;
@@ -47,8 +48,13 @@ tbody tr:nth-child(even) {
     background-color: #eee;
 }
 
+tbody th:hover,
+tbody td:hover{
+    color: #03989e;
+}
+
 tbody th {
-    background-color: #36c;
-    color: #fff;
+    /* background-color: #36c; */
+    /* color: #fff; */
     text-align: left;
 }

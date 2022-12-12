@@ -9,7 +9,7 @@
     if(!Order::countOrder($params['userID'])){
 ?>
 <div class="message">
-    <h2>Bạn chưa có đơn hàng nào tại BkphoneS</h2>
+    <h2>Bạn chưa có đơn hàng nào tại Bkphone</h2>
     <h2>Tiếp tục mua sắm tại <a href="/">đây</a></h2>
 </div>
 
@@ -38,8 +38,8 @@
                     <td><?= $order->username ?></td>
                     <td><?= $order->address ?></td>
                     <td><?= $order->order_description ?></td>
-                    <td><?= $order->price ?></td>
-                    <td><?= $order->createDate ?></td>
+                    <td><?php echo number_format($order->price, 0, ',', '.')?></td>
+                    <td><?= $order->created_at ?></td>
                     <td><?= $order->payment_status ?></td>
                 </tr>
             <?php } ?>
