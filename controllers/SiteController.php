@@ -62,8 +62,7 @@ class SiteController extends Controller
                     if ($path == "admin/login") {
                         return Application::$app->response->redirect('/admin/products');
                     } else {
-                        echo $path;
-                        // return Application::$app->router->intended('/'); 
+                        return Application::$app->router->intended('/'); 
                     }
 
                 } else {
