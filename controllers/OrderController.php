@@ -13,7 +13,7 @@ class OrderController extends Controller{
         $this->registerMiddleware(new AuthMiddleWare(['order']));
     }
 
-    public function index(){
+    public function order(){
         $userID = Application::$app->session->get('user');
         $orders = Order::getAllOrder($userID);
         $this->setLayout('main');
