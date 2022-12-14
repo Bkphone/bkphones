@@ -90,9 +90,9 @@ class m0001_initial
             -- ---------------------------------------------------------
 
             --
-            -- Table structure for table `productincart`
+            -- Table structure for table `product_in_cart`
             --
-            CREATE TABLE `productincart` (
+            CREATE TABLE `product_in_cart` (
                 `user_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
                 `product_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
                 `quantity` int(4) NOT NULL DEFAULT 1,
@@ -142,9 +142,9 @@ class m0001_initial
             ADD PRIMARY KEY (`id`);
 
             --
-            -- Indexes for table `productincart`
+            -- Indexes for table `product_in_cart`
             --
-            ALTER TABLE `productincart`
+            ALTER TABLE `product_in_cart`
             ADD PRIMARY KEY (`user_id`,`product_id`,`order_id`);
 
             --

@@ -43,7 +43,7 @@ class ProductInCart extends DBModel{
 
     public static function tableName(): string
     {
-        return 'productincart';
+        return 'product_in_cart';
     }
 
     public function attributes(): array
@@ -78,35 +78,35 @@ class ProductInCart extends DBModel{
 
     public static function getTotalQuantity($userId){
         $db = Database::getInstance();
-        $result = $db->query("SELECT SUM(quantity) FROM productincart WHERE user_id = '$userId' AND order_id='';");
+        $result = $db->query("SELECT SUM(quantity) FROM product_in_cart WHERE user_id = '$userId' AND order_id='';");
         $value = $result->fetch();
         return $value[0]; 
     }
 
     public static function addToCart($user_id, $product_id){
         $db = Database::getInstance();
-        $req = $db->query("SELECT * FROM productincart WHERE product_id = '$product_id' AND user_id = '$user_id' and order_id='';");
+        $req = $db->query("SELECT * FROM product_in_cart WHERE product_id = '$product_id' AND user_id = '$user_id' and order_id='';");
         if($req->fetchALL()[0] !== NULL){
-            $db->query("UPDATE productincart SET quantity = quantity +1 WHERE product_id = '$product_id' AND user_id = '$user_id' and order_id='';");
+            $db->query("UPDATE product_in_cart SET quantity = quantity +1 WHERE product_id = '$product_id' AND user_id = '$user_id' and order_id='';");
         }else{
             $req = $db->query("SELECT * FROM products WHERE id = '$product_id';");
             $item = $req->fetchALL()[0];
             $price = $item['price_through'];
-            $db->query("INSERT INTO productincart VALUES ('$user_id','$product_id',1,$price,'');");
+            $db->query("INSERT INTO product_in_cart VALUES ('$user_id','$product_id',1,$price,'');");
         }
     }
 
     public static function removeFromCart($key){
         if($key){
             $db = Database::getInstance();
-            $db->query("DELETE FROM productincart WHERE product_id = '$key' AND order_id='';");
+            $db->query("DELETE FROM product_in_cart WHERE product_id = '$key' AND order_id='';");
         }
     }
 
     public static function changeQuantity($key, $value){
         $db = Database::getInstance();
         if($key){
-            $db->query("UPDATE productincart SET quantity = $value WHERE product_id = '$key' AND order_id='';");
+            $db->query("UPDATE product_in_cart SET quantity = $value WHERE product_id = '$key' AND order_id='';");
         }
     }
 
@@ -114,7 +114,7 @@ class ProductInCart extends DBModel{
         $list = [];
         $db = Database::getInstance();
         if($id){
-            $req = $db->query("SELECT * FROM productincart  WHERE user_id='$id' AND order_id='';");
+            $req = $db->query("SELECT * FROM product_in_cart  WHERE user_id='$id' AND order_id='';");
             foreach($req->fetchAll() as $item){
                 $list[] = new ProductInCart($item['user_id'], $item['product_id'], $item['quantity'], $item['price'], $item['order_id']);
             }
@@ -126,7 +126,7 @@ class ProductInCart extends DBModel{
         $list = [];
         $db = Database::getInstance();    
         if($id){
-            $req = $db->query("SELECT * FROM products WHERE id IN (SELECT product_id FROM productincart WHERE user_id='$id' AND order_id='');");
+            $req = $db->query("SELECT * FROM products WHERE id IN (SELECT product_id FROM product_in_cart WHERE user_id='$id' AND order_id='');");
             foreach($req->fetchAll() as $item){
                 $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                 $item['price_show'], $item['price_through'], $item['discount'], 
