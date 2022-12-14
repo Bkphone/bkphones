@@ -116,6 +116,7 @@ class Order extends DBModel{
     {   
         $this->id = uniqid();
         $this->order_status = 'Đang chờ duyệt';
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
         $this->created_at = date_format(date_create(),"Y-m-d H:i:s"); 
         $this->payment_status = 'Chưa thanh toán';
 
