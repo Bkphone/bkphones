@@ -1,9 +1,9 @@
 <?php 
 use app\core\Application;
 ?>
-<div class="card-regester">
-    <div class="card-header">
-        <h1>Create User</h1>
+<div class="card-regester" style="width:50%; margin: 0 auto; background: #e7e7e7; padding: 50px;">
+    <div class="card-header text-center">
+        <h1 style="font-size:2rem;">Create User</h1>
     </div>
     <div class="text text-success"><?php if(Application::$app->session->getFlash('success')){
         echo "You have added success a new user";
@@ -50,8 +50,8 @@ use app\core\Application;
                 <input type="checkbox" required>
                 <span style="color: #000000">Confirm add a new user</span>
             </div>
-            <div class="btn">
-                <button type="submit" class="button btn-success">Add</button>
+            <div class="btn" style="width: 500px; margin: 15px auto;">
+                <button type="submit" class="button btn-success" style="width: 150px;">Add</button>
             </div>
         <?php app\core\form\Form::end() ?>
     </div>
