@@ -101,16 +101,12 @@ $app->router->post('/product', [MenuController::class, 'detail']);
 
 // manage oders
 $app->router->get('/admin/orders/delete', [OrderController::class, 'delete']);
-$app->router->get('/admin/orders/edit', [OrderController::class, 'update']);
-$app->router->get('/admin/orders/create', [OrderController::class, 'create']);
+$app->router->get('/admin/orders/confirm', [OrderController::class, 'confirm']);
 $app->router->get('/admin/orders/details', [OrderController::class, 'details']);
 
 
-
-
 $app->router->post('/admin/orders/delete', [OrderController::class, 'delete']);
-$app->router->post('/admin/orders/edit', [OrderController::class, 'update']);
-$app->router->post('/admin/orders/create', [OrderController::class, 'create']);
+$app->router->post('/admin/orders/confirm', [OrderController::class, 'confirm']);
 $app->router->post('/admin/orders/details', [OrderController::class, 'details']);
 
     
