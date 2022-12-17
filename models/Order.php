@@ -184,4 +184,76 @@ class Order extends DBModel{
         return $count[0];
     }
 
+    // manage order
+
+    public function load($params)
+    {
+        $this->id = $params[0];
+        $this->user_id = $params[1];
+        $this->order_status = $params[2];
+        $this->username = $params[3];
+        $this->email = $params[4];
+        $this->address = $params[5];
+        $this->order_description = $params[6];
+        $this->price = $params[7];
+        $this->created_at = $params[8];
+        $this->payment_status = $params[9];
+    }
+    public static function getAllCurrentOrder()
+    {
+        $list = [];
+        $db = Database::getInstance();
+        $req = $db->query("SELECT * FROM orders");
+
+        foreach ($req->fetchAll() as $item) {
+            $currentOrders = new Order();
+            $params = array($item['id'], $item['user_id'], $item['order_status'], $item['username'],
+            $item['email'],$item['address'],$item['order_description'],$item['price'],$item['created_at'],$item['payment_status']);
+            $currentOrders->load($params);
+            array_push($list, $currentOrders);
+        }
+
+        return $list;
+    }
+
+    public function updateOrderStatus($id)
+    {   $status = "Đã được duyệt";
+        $statement = self::prepare(
+            "UPDATE orders 
+            SET 
+                order_status = '$status'
+            WHERE id = '$id';
+            "
+        );
+        $statement->execute();
+        return true;
+    }
+   
+    public static function getOrderDetails($id)
+    {
+        $db = Database::getInstance();
+        $req = $db->query("SELECT * FROM orders WHERE id = '$id';");
+        $item = $req->fetchAll()[0];
+        $order = new Order();
+        $order->id = $item['id'];
+        $order->user_id = $item['user_id'];
+        $order->order_status = $item['order_status'];
+        $order->username = $item['username'];
+        $order->email = $item['email'];
+        $order->address = $item['address'];
+        $order->order_description = $item['order_description'];
+        $order->created_at = $item['created_at'];
+        $order->price = $item['price'];
+        $order->payment_status = $item['payment_status'];
+        return $order;
+    }
+
+    public function delete()
+    {
+        $tablename = $this->tableName();
+        $sql = "DELETE FROM $tablename WHERE id=?";
+        $stmt= self::prepare($sql);
+        $stmt->execute([$this->id]);
+        return true;     
+    }   
 }
