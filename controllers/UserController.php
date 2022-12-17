@@ -63,6 +63,7 @@ class UserController extends Controller{
         }
         $this->setLayout('admin');
         return $this->render('edit', [
+
             'model' => $usermodel
         ]);
     }
@@ -87,7 +88,7 @@ class UserController extends Controller{
     {     $id = $_GET["id"];
           $usermodel = User::getUserInfo($id);
           $usermodel->delete();
-          Application::$app->session->setFlash('success', 'You have edited success');
+          Application::$app->session->setFlash('success', 'You have deleted success');
           Application::$app->response->redirect('/admin/users');  
        
      }
