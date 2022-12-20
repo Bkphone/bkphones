@@ -287,16 +287,6 @@ class Product extends DBModel
         $req = $db->query('SELECT * FROM products');
 
         foreach ($req->fetchAll() as $item) {
-            $list[] = new Product(
-                $item['id'],
-                $item['category_id'],
-                $item['name'],
-                $item['price_show'],
-                $item['price_through'],
-                $item['discount'],
-                $item['description'],
-                $item['image_url']
-            );
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
@@ -349,12 +339,27 @@ class Product extends DBModel
         return true;
     }
 
+    public static function getProductsByCategory($category_id)
+    {
+        $list = [];
+        $db = Database::getInstance();
+        $req = $db->query("SELECT * FROM products WHERE category_id = '$category_id'");
+
+        foreach ($req->fetchAll() as $item) {
+            $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
+                                $item['price_show'], $item['price_through'], $item['discount'], 
+                                $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
+                                $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
+                                $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
+        }
+        return $list;
+    }
+
     public static function searchProductByName($name)
     {
         $list = [];
         $db = Database::getInstance();
         $sql = "SELECT * FROM products WHERE name LIKE '%$name%'";
-        $sql .= "OR category_id like '%" . $name . "%'";
         $req = $db->query($sql);
         foreach ($req->fetchAll() as $item) {
             $list[] = new Product(
