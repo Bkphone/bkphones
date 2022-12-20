@@ -241,16 +241,6 @@ class Product extends DBModel
         }
 
         foreach ($req->fetchAll() as $item) {
-            $list[] = new Product(
-                $item['id'],
-                $item['category_id'],
-                $item['name'],
-                $item['price_show'],
-                $item['price_through'],
-                $item['discount'],
-                $item['description'],
-                $item['image_url']
-            );
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
