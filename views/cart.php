@@ -88,13 +88,31 @@
                 <h3 class="title">TIẾN HÀNH ĐẶT HÀNG</h3>
             </div>
             <div class="card-body">
-                <?php echo $form->field($model, 'username') ?>
-                <?php echo $form->field($model, 'email') ?>
-                <?php echo $form->field($model, 'address') ?>
-                <?php echo $form->field($model, 'order_description') ?>
+                
+                <div class="mb-3">
+                    <label class="form-label">Người nhận</label>
+                    <input type="text" name="username" value="<?=$params['user']->firstname?> <?=$params['user']->lastname?>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" value="<?=$params['user']->email?>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ nhận hàng</label>
+                    <input type="text" name="address" value="" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Thông tin chi tiết</label>
+                    <input type="text" name="order_description" value="">
+                </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn float-right login_btn" name="order">Đặt hàng</button>
                 </div>
+                
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
@@ -105,6 +123,6 @@
     </div>
     <?php app\core\form\Form::end() ?>
 </div>
-
+    
     <?php } ?>
 </div>

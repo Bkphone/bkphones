@@ -215,7 +215,7 @@
     width:600px !important;
 }
 
-.order-card input[type=text]{
+.order-card input[type=text],input[type=email]{
     width: 100%;
     padding: 6px 10px;
     height: 30px;

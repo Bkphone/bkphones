@@ -5,7 +5,6 @@ use app\core\Application;
 use app\core\Controller;
 use app\middlewares\AuthMiddleWare;
 use app\models\Order;
-use app\core\Request;
 
 class OrderController extends Controller{
     public function __construct()
