@@ -7,6 +7,7 @@ use app\models\Product;
 use app\middlewares\AuthMiddleWare;
 use app\core\Application;
 use app\core\Request;
+use app\models\Category;
 use app\models\ProductInCart;
 
 class MenuController extends Controller
@@ -31,9 +32,17 @@ class MenuController extends Controller
 
     public function menu()
     {
-        $products = Product::getAllProducts();
+        $category = Application::$app->request->getParam('category');
+        if ($category == '') {
+            $products = Product::getAllProducts();
+        } else {
+            $products = Product::getProductsByCategory($category);
+        }
+        $categories = Category::getAllCategories();
+
         return $this->render('menu', [
-            'products' => $products
+            'products' => $products, 
+            'categories' => $categories
         ]);
     }
 
@@ -57,5 +66,18 @@ class MenuController extends Controller
                 'productModel' => $productModel
             ]);
         }
+    }
+
+    public function search()
+    {
+        $categories = Category::getAllCategories();
+        $keyword = Application::$app->request->getBody('keyword');
+        $products = Product::searchProductByName($keyword['keyword']);
+        $categories = Category::getAllCategories();
+
+        return $this->render('menu', [
+            'products' => $products, 
+            'categories' => $categories
+        ]);
     }
 }
