@@ -6,7 +6,6 @@ use app\core\Application;
 use app\controllers\ProfileController;
 use app\controllers\ProductController;
 use app\controllers\AdminController;
-use app\controllers\DashboardController;
 use app\controllers\MenuController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
@@ -40,7 +39,7 @@ $app->router->get('/profile', [ProfileController::class, 'profile']);
 $app->router->post('/profile', [ProfileController::class, 'profile']);
 $app->router->get('/stores', [SiteController::class, 'stores']);
 $app->router->get('/menu', [MenuController::class, 'menu']);
-
+$app->router->post('/menu', [MenuController::class, 'search']);
 //cart
 $app->router->get('/cart', [CartController::class, 'cart']);
 $app->router->post('/cart', [CartController::class, 'cart']);
@@ -76,8 +75,6 @@ $app->router->get('/admin/users/create', [UserController::class, 'create']);
 $app->router->get('/admin/users/details', [UserController::class, 'details']);
 $app->router->get('/admin/users/edit/password', [UserController::class, 'password']);
 
-
-
 $app->router->post('/admin/users/delete', [UserController::class, 'delete']);
 $app->router->post('/admin/users/edit', [UserController::class, 'update']);
 $app->router->post('/admin/users/create', [UserController::class, 'create']);
@@ -109,6 +106,9 @@ $app->router->post('/admin/orders/delete', [OrderController::class, 'delete']);
 $app->router->post('/admin/orders/confirm', [OrderController::class, 'confirm']);
 $app->router->post('/admin/orders/details', [OrderController::class, 'details']);
 
-    
+// admin profile AdminController
+$app->router->post('/admin/profile', [AdminController::class, 'profile']);
+$app->router->get('/admin/profile', [AdminController::class, 'profile']);
+
 // run
 $app->run();
