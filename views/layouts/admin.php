@@ -78,11 +78,6 @@ $userModel = User::getUserInfo($userID);
           </a>
         </li>
         <li>
-          <a href="/admin/stores">
-            <i class="fa fa-store" aria-hidden="true"></i> &nbsp;Quản lý cửa hàng
-          </a>
-        </li>
-        <li>
           <a href="/admin/profile">
             <i class="fas fa-user-cog" aria-hidden="true"></i>&nbsp;Tài khoản của tôi
           </a>
