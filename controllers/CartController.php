@@ -31,7 +31,8 @@ class CartController extends Controller{
             $orderModel->address = $_POST['address'];
             $orderModel->order_description = (isset($_POST['order_description']))?$_POST['order_description']:'';
 
-            $orderModel->create();       
+            $orderModel->create(); 
+            Application::$app->response->redirect('/cart/notice');      
         }
         
         return $this->render('cart',[
@@ -60,4 +61,9 @@ class CartController extends Controller{
         header('location: cart');
     }
 
+    public function notice()
+    {
+        $this->setLayout('auth');
+        return $this->render('payment_success');
+    }
 }
