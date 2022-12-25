@@ -230,7 +230,7 @@ class Order extends DBModel{
         return true;
     }
    
-    public static function getOrderDetails($id)
+    public static function getorder_details($id)
     {
         $db = Database::getInstance();
         $req = $db->query("SELECT * FROM orders WHERE id = '$id';");
