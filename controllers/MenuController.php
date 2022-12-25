@@ -14,7 +14,7 @@ class MenuController extends Controller
 {
     public function __construct()
     {
-        $this->registerMiddleware(new AuthMiddleWare(['menu']));
+        $this->registerMiddleware(new AuthMiddleWare(['detail']));
     }
 
     public function home()

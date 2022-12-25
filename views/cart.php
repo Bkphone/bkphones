@@ -101,7 +101,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Địa chỉ nhận hàng</label>
-                    <input type="text" name="address" value="" required>
+                    <input type="text" name="address" value="<?=$params['user']->address?>" required>
                 </div>
 
                 <div class="mb-3">
