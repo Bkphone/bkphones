@@ -40,9 +40,11 @@ $app->router->post('/profile', [ProfileController::class, 'profile']);
 $app->router->get('/stores', [SiteController::class, 'stores']);
 $app->router->get('/menu', [MenuController::class, 'menu']);
 $app->router->post('/menu', [MenuController::class, 'search']);
+
 //cart
 $app->router->get('/cart', [CartController::class, 'cart']);
 $app->router->post('/cart', [CartController::class, 'cart']);
+$app->router->get('/cart/notice', [CartController::class, 'notice']);
 
 //order
 $app->router->get('/lookup-orders', [OrderController::class, 'order']);
