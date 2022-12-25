@@ -9,14 +9,6 @@ use app\core\Application;
 use app\middlewares\AdminMiddleWare;
 use app\models\User;
 use app\core\Request;
-use app\exception\ForbiddenException;
-use app\models\LoginForm;
-
-use app\middlewares\AuthMiddleWare;
-
-use app\models\Store;
-use app\core\Form\Field;
-use app\core\Model;
 
 class UserController extends Controller{
     public function __construct() {
@@ -31,10 +23,10 @@ class UserController extends Controller{
             'users' => $users
         ]);
     }
+
     public function create(Request $request)
     {
-          $usermodel = new User();
-       // $usermodel = User::getUserInfo(Application::$app->user->id);
+        $usermodel = new User();
         if ($request->getMethod() === 'post') {
             $usermodel->loadData($request->getBody());
             $role = $usermodel->role;
@@ -44,6 +36,7 @@ class UserController extends Controller{
                 return 'Show success page';
             }
         }
+
         $this->setLayout('admin');
         return $this->render('create', [
             'model' => $usermodel
@@ -51,8 +44,9 @@ class UserController extends Controller{
     }
    
     public function update(Request $request)
-    {     $id = $_GET["id"];
-          $usermodel = User::getUserInfo($id);
+    {     
+        $id = $_GET["id"];
+        $usermodel = User::getUserInfo($id);
         if ($request->getMethod() === 'post') {
             $usermodel->loadData($request->getBody());
             if ($usermodel->updateProfile($usermodel)) {
@@ -61,15 +55,18 @@ class UserController extends Controller{
                 return 'Show success page';
             }
         }
+
         $this->setLayout('admin');
         return $this->render('edit', [
 
             'model' => $usermodel
         ]);
     }
+
     public function password(Request $request)
-    {     $id = $_GET["id"];
-          $usermodel = User::getUserInfo($id);
+    {     
+        $id = $_GET["id"];
+        $usermodel = User::getUserInfo($id);
         if ($request->getMethod() === 'post') {
             $usermodel->loadData($request->getBody());
             if ($usermodel->update($usermodel)) {
@@ -78,6 +75,7 @@ class UserController extends Controller{
                 return 'Show success page';
             }
         }
+
         $this->setLayout('admin');
         return $this->render('password', [
             'model' => $usermodel
@@ -85,13 +83,11 @@ class UserController extends Controller{
     }
     
     public function delete()
-    {     $id = $_GET["id"];
-          $usermodel = User::getUserInfo($id);
-          $usermodel->delete();
-          Application::$app->session->setFlash('success', 'You have deleted success');
-          Application::$app->response->redirect('/admin/users');  
-       
-     }
-       
-  
+    {     
+        $id = $_GET["id"];
+        $usermodel = User::getUserInfo($id);
+        $usermodel->delete();
+        Application::$app->session->setFlash('success', 'You have deleted success');
+        Application::$app->response->redirect('/admin/users');  
     }
+}
