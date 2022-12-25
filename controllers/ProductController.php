@@ -52,7 +52,7 @@ class ProductController extends Controller
             }
         }
         $this->setLayout('admin');
-        return $this->render('productCRUD', [
+        return $this->render('product_crud', [
             'model' => $product,
             'type' => 'create',
             'category' => $category
@@ -72,7 +72,7 @@ class ProductController extends Controller
             }
         }
         $this->setLayout('admin');
-        return $this->render('productCRUD', [
+        return $this->render('product_crud', [
             'model' => $product,
             'type' => 'update',
             'category' => $category
