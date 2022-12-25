@@ -21,7 +21,7 @@ class AdminController extends Controller{
     public function index() 
     {
        $this->setLayout('admin');
-      return $this->render('adminhome');
+      return $this->render('admin_home');
     }
 
     public function profile(Request $request)
