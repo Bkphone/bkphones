@@ -17,7 +17,7 @@
 .container .message img{
     width: 150px;
     height: 150px;
-    margin: 100px 0;
+    margin: 70px 0;
 }
 
 .container .message h2{
@@ -215,7 +215,7 @@
     width:600px !important;
 }
 
-.order-card input[type=text]{
+.order-card input[type=text],input[type=email]{
     width: 100%;
     padding: 6px 10px;
     height: 30px;

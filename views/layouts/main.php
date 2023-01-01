@@ -52,14 +52,6 @@ if(!Application::$app->isGuest()) {
             <div class="cps-page">
                 <div data-fetch-key="Header:0">
                     <header id="cpsHeader" class="cps-header sticky ">
-                        <!-- <div id="topBarHeader">
-                            <div class="is-flex is-justify-content-center is-align-content-center">
-                                <div class="pulsingButton mr-3"></div> 
-                                <a href="/mobile/apple/iphone-14.html" class="has-text-white text-topbar">
-                                    iPhone 14 Series đặt hàng từ 7-13/10 - Đăng ký ngay!
-                                </a>
-                            </div>
-                        </div> -->
                         <div class="cps-container">
                             <nav class="cps-navbar">
                                 <a href="/" class="navbar-brand">
@@ -122,7 +114,7 @@ if(!Application::$app->isGuest()) {
                                     </div>
                                 </a>
                                 <div class="box-search cps-navbar__search">
-                                    <form>
+                                    <?php $form = app\core\Form\Form::begin('', "post") ?>
                                         <div class="cps-group-input is-flex">
                                             <div class="input-group-btn">
                                                 <button type="submit" class="pr-0 border-0 shadow-none outline-none text-dark">
@@ -131,9 +123,10 @@ if(!Application::$app->isGuest()) {
                                                     </div>
                                                 </button>
                                             </div> 
-                                            <input id="inpSearch" type="text" placeholder="Bạn cần tìm gì?" autocomplete="off" value="" class="cps-input">
+                                            <input id="inpSearch" type="keyword" name="keyword" placeholder="Bạn cần tìm gì?" autocomplete="off" value="" class="cps-input">
                                         </div>
                                     </form>
+                                    <?php app\core\form\Form::end() ?>
                                     <div class="header-overlay"></div>
                                 </div> 
                                 <a href="tel:18002097" class="header-item about-contact">
@@ -144,14 +137,6 @@ if(!Application::$app->isGuest()) {
                                         <p class="title">Gọi mua hàng<br> <strong>1800.2097</strong></p>
                                     </div>
                                 </a> 
-                                <!-- <a target="_blank" rel="noopener" href="/stores" class="header-item about-store">
-                                    <div class="about__box-icon">
-                                        <img src="/images/home/location.svg">
-                                    </div>
-                                    <div class="about__box-content">
-                                        <p class="title">Cửa hàng<br>gần bạn</p>
-                                    </div>
-                                </a>  -->
                                 <a target="_blank" rel="noopener" href="/lookup-orders" class="header-item about-delivery-tracking">
                                     <div class="about__box-icon">
                                         <img src="/images/home/order-lookup.svg" alt="Tra cứu đơn hàng">

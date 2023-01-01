@@ -5,12 +5,20 @@ use app\core\Application;
 use app\core\Controller;
 use app\middlewares\AuthMiddleWare;
 use app\models\Order;
-use app\core\Request;
 
 class OrderController extends Controller{
     public function __construct()
     {
-        $this->registerMiddleware(new AuthMiddleWare(['cart']));
+        $this->registerMiddleware(new AuthMiddleWare(['order']));
+    }
+
+    public function index() 
+    {
+        $orders = Order::getAllCurrentOrder();
+        $this->setLayout('admin');
+        return $this->render('orders', [
+            'orders' => $orders
+        ]);
     }
 
     public function order(){
@@ -24,4 +32,34 @@ class OrderController extends Controller{
         ]);
 
     }
+
+    public function confirm ()
+    {     
+        $id = $_GET["id"];
+        $order = Order::getOrderInfo($id);
+        $order->updateOrderStatus($id);
+        Application::$app->session->setFlash('confirmOrder', 'You have confirm success');
+        Application::$app->response->redirect('/admin/orders');  
+
+    }
+
+    public function details ()
+    {     
+        $id = $_GET["id"];
+        $order = Order::getorder_details($id);
+        $this->setLayout('admin');
+        return $this->render('order_details', [
+            'order' => $order
+        ]);
+    }
+
+   public function delete()
+    {     
+        $id = $_GET["id"];
+        $order = Order::getOrderInfo($id);
+        $order->delete();
+        Application::$app->session->setFlash('success', 'You have deleted success');
+        Application::$app->response->redirect('/admin/orders');  
+    }
+     
 }

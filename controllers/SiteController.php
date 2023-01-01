@@ -5,7 +5,6 @@ namespace app\controllers;
 use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
-use app\exception\ForbiddenException;
 use app\middlewares\AuthMiddleWare;
 
 use app\models\LoginForm;
@@ -62,15 +61,14 @@ class SiteController extends Controller
                     if ($path == "admin/login") {
                         return Application::$app->response->redirect('/admin/products');
                     } else {
-                        echo $path;
-                        // return Application::$app->router->intended('/'); 
+                        return Application::$app->router->intended('/'); 
                     }
-
                 } else {
                     return Application::$app->router->intended('/');
                 }
             }
         }
+
         $this->setLayout('auth');
         return $this->render('login', [
             'model' => $loginForm
@@ -88,6 +86,7 @@ class SiteController extends Controller
                 return 'Show success page';
             }
         }
+
         $this->setLayout('auth');
         return $this->render('register', [
             'model' => $registerModel
@@ -117,14 +116,10 @@ class SiteController extends Controller
     }
 
     public function admin(Request $request) {
-        $loginForm = new LoginForm();
         if ($request->getMethod() == 'get') {
             if (isset($_COOKIE["member_login"])) {
-                // return Application::$app->response->redirect('/admin/category');
-                $this->setLayout('admin');
-                return $this->render('adminIndex', [
-                    
-                ]);
+                    $this->setLayout('admin');
+                    return $this->render('admin_index', []);
             }
             return Application::$app->response->redirect('/admin/login');
         }

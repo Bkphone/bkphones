@@ -5,6 +5,7 @@ use app\controllers\SiteController;
 use app\core\Application;
 use app\controllers\ProfileController;
 use app\controllers\ProductController;
+use app\controllers\AdminController;
 use app\controllers\MenuController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
@@ -38,10 +39,12 @@ $app->router->get('/profile', [ProfileController::class, 'profile']);
 $app->router->post('/profile', [ProfileController::class, 'profile']);
 $app->router->get('/stores', [SiteController::class, 'stores']);
 $app->router->get('/menu', [MenuController::class, 'menu']);
+$app->router->post('/menu', [MenuController::class, 'search']);
 
 //cart
 $app->router->get('/cart', [CartController::class, 'cart']);
 $app->router->post('/cart', [CartController::class, 'cart']);
+$app->router->get('/cart/notice', [CartController::class, 'notice']);
 
 //order
 $app->router->get('/lookup-orders', [OrderController::class, 'order']);
@@ -54,6 +57,7 @@ $app->router->get('/admin/login', [SiteController::class, 'login']);
 $app->router->get('/admin/users', [UserController::class, 'index']);
 $app->router->get('/admin/products', [ProductController::class, 'index']);
 $app->router->get('/admin/category', [CategoryController::class, 'index']);
+$app->router->get('/admin/orders', [OrderController::class, 'index']);
 
 // store
 $app->router->get('/admin/stores/delete', [StoreController::class, 'delete']);
@@ -93,6 +97,21 @@ $app->router->post('/admin/category/edit', [CategoryController::class, 'update']
 $app->router->get('/admin/category/edit', [CategoryController::class, 'update']);
 $app->router->get('/admin/category/delete', [CategoryController::class, 'delete']);
 $app->router->get('/product', [MenuController::class, 'detail']);
+$app->router->post('/product', [MenuController::class, 'detail']);
+
+// manage oders
+$app->router->get('/admin/orders/delete', [OrderController::class, 'delete']);
+$app->router->get('/admin/orders/confirm', [OrderController::class, 'confirm']);
+$app->router->get('/admin/orders/details', [OrderController::class, 'details']);
+
+
+$app->router->post('/admin/orders/delete', [OrderController::class, 'delete']);
+$app->router->post('/admin/orders/confirm', [OrderController::class, 'confirm']);
+$app->router->post('/admin/orders/details', [OrderController::class, 'details']);
+
+// admin profile AdminController
+$app->router->post('/admin/profile', [AdminController::class, 'profile']);
+$app->router->get('/admin/profile', [AdminController::class, 'profile']);
 
 // run
 $app->run();

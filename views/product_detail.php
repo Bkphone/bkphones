@@ -38,10 +38,14 @@
                 </div>
             </div>
             <div class="area_order">
-                <a class="buy_now" onclick="themVaoGioHang(maProduct, nameProduct);">
-                    <b><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</b>
-                    <p>Giao trong 1 giờ hoặc nhận tại cửa hàng</p>
-                </a>
+                <form action="" method="POST">
+                    <button type="submit" name ="addToCart">
+                        <a class="buy_now">
+                            <b><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</b>
+                            <p>Giao trong 1 giờ hoặc nhận tại cửa hàng</p>
+                        </a>
+                    </button>
+                </form>
             </div>
         </div>
         <div class="info_product">
@@ -84,85 +88,6 @@
                     <div><?php echo $params['productModel']->battery ?>h</div>
                 </li>
             </ul>
-        </div>
-    </div>
-    <div id="overlaycertainimg" class="overlaycertainimg">
-        <div class="close" onclick="closecertain()">×</div>
-        <div class="overlaycertainimg-content">
-            <img id="bigimg" class="bigimg" src="images/products/iphone-7-plus-32gb-hh-600x600.jpg">
-            <div class="div_smallimg owl-carousel owl-loaded owl-drag">
-                <div class="owl-stage-outer">
-                    <div class="owl-stage"
-                        style="transition: all 0s ease 0s; width: 2135px; transform: translate3d(610px, 0px, 0px);">
-                        <div class="owl-item active center" style="width: 304.96px;">
-                            <div class="item">
-                                <a>
-                                    <img src="images/products/huawei-mate-20-pro-green-600x600.jpg"
-                                        onclick="changepic(this.src)">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 304.96px;">
-                            <div class="item">
-                                <a>
-                                    <img src="images/details/oppo-f9-mau-do-1-org.jpg"
-                                        onclick="changepic(this.src)">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 304.96px;">
-                            <div class="item">
-                                <a>
-                                    <img src="images/details/oppo-f9-mau-do-2-org.jpg"
-                                        onclick="changepic(this.src)">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 304.96px;">
-                            <div class="item">
-                                <a>
-                                    <img src="images/details/oppo-f9-mau-do-3-org.jpg"
-                                        onclick="changepic(this.src)">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 304.96px;">
-                            <div class="item">
-                                <a>
-                                    <img src="images/products/huawei-mate-20-pro-green-600x600.jpg"
-                                        onclick="changepic(this.src)">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 304.96px;">
-                            <div class="item">
-                                <a>
-                                    <img src="images/details/oppo-f9-mau-do-3-org.jpg"
-                                        onclick="changepic(this.src)">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 304.96px;">
-                            <div class="item">
-                                <a>
-                                    <img src="images/products/huawei-mate-20-pro-green-600x600.jpg"
-                                        onclick="changepic(this.src)">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
-                            aria-label="Previous">‹</span></button><button type="button" role="presentation"
-                        class="owl-next"><span aria-label="Next">›</span></button></div>
-                <div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button
-                        role="button" class="owl-dot"><span></span></button><button role="button"
-                        class="owl-dot"><span></span></button><button role="button"
-                        class="owl-dot"><span></span></button><button role="button"
-                        class="owl-dot"><span></span></button><button role="button"
-                        class="owl-dot"><span></span></button><button role="button"
-                        class="owl-dot"><span></span></button></div>
-            </div>
         </div>
     </div>
 </div>

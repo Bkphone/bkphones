@@ -369,3 +369,9 @@
     margin: 5px 0;
     color: #333;
 }
+
+.area_order button{
+    width: 100%;
+    background-color: white;
+    border: none;
+}
