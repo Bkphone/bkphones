@@ -4,7 +4,7 @@ namespace app\middlewares;
 
 
 use app\core\Application;
-use app\exception\ForbiddenException;
+use app\exception\ForBiddenException;
 
 class AdminMiddleWare extends BaseMiddleWare
 {
@@ -20,7 +20,7 @@ class AdminMiddleWare extends BaseMiddleWare
         if (!Application::isAdmin()) {
             if (!empty($this->actions)) {
                     if(in_array(Application::$app->controller->action, $this->actions)) {
-                        throw new ForbiddenException();
+                        throw new ForBiddenException();
                 }
             }
         }
