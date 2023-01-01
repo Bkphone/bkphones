@@ -52,7 +52,6 @@ class CategoryController extends Controller {
     public function update(Request $request) {
         $param = $request->getParam('id');
         $category = Category::get($param);
-        // echo $category;
         if ($request->getMethod() == "post") {
             $category->name = $request->getBody()['name'];
             if ($category->validate() && Category::update($category)) {
@@ -64,9 +63,7 @@ class CategoryController extends Controller {
         return $this->render('category_update', [
             'model' => $category,
             'type' => 'update'
-        ]);
-        
-        $this->index();
+        ]);        
     }
 
     public function delete(Request $request)
