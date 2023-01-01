@@ -94,7 +94,7 @@ class Category extends DBModel
         return true;
     }
 
-    public function update($category)
+    public static function update($category)
     {
         $sql = "UPDATE categories SET name='$category->name' 
                                     WHERE id='$category->id'";

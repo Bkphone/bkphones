@@ -15,7 +15,8 @@
                     <td><?php echo $category->id ?></td>
                     <td><?php echo $category->name ?></td>
                     <td>
-                        <button type="button" class="btn btn-warning" onclick="location.href='category/edit?id=<?php echo $category->id; ?>'"><i class="fa-solid fa-pen"></i> Edit</button>
+                        <!-- <button type="button" class="btn btn-warning"  onclick="location.href='category/edit?id=<?php //echo $category->id; ?>'"><i class="fa-solid fa-pen"></i> Edit</button> -->
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createCategory"  onclick="location.href='category/edit?id=<?php echo $category->id; ?>'"><i class="fa-solid fa-pen"></i> Edit</button>
                         &nbsp;<button type="button" class="btn btn-danger" onclick="location.href='category/delete?id=<?php echo $category->id; ?>'"><i class="fa-solid fa-trash"></i> Delete</button>
                     </td>
                 </tr>

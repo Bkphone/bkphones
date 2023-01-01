@@ -94,6 +94,7 @@ $app->router->post('/admin/products/create', [ProductController::class, 'create'
 // category
 $app->router->post('/admin/category', [CategoryController::class, 'create']);
 $app->router->post('/admin/category/edit', [CategoryController::class, 'update']);
+$app->router->get('/admin/category/edit', [CategoryController::class, 'update']);
 $app->router->get('/admin/category/delete', [CategoryController::class, 'delete']);
 $app->router->get('/product', [MenuController::class, 'detail']);
 $app->router->post('/product', [MenuController::class, 'detail']);
