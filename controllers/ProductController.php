@@ -18,17 +18,48 @@ class ProductController extends Controller
 
     public function index() 
     {
-        if ($_GET) {
-            $page = $_GET['page'];
-        } else {
-            $page = 1;
-        }
+        $products = [];
+        $_GET['page'] ? $page = $_GET['page'] : $page = 1;
+        $_GET['category_id'] ? $category_id = $_GET['category_id'] : $category_id = '0';
+        $_GET['name'] ? $name = $_GET['name'] : $name = '';
+        $_GET['id'] ? $p_id = $_GET['id'] : $p_id = '';
+        $_GET['start'] ? $p_price_start = $_GET['start'] : $p_price_start = '';
+        $_GET['end'] ? $p_price_end = $_GET['end'] : $p_price_end = '';
+            
+            // $page = $_GET['page'];
+            // $name = $_GET['name'];
+            // $product_id = $_GET['id'];
+            // $price_range_s = $_GET['start'];
+            // $price_range_e = $_GET['end'];
+            // if ($category_id != '0' or $name != '' or $product_id != '' or $price_range_s != '' or $price_range_e != '') {
+            //     $allproducts = Product::searchProducts($category_id, $name, $product_id, $price_range_s, $price_range_e);
+            // }
         $num_products_per_page = 10;
-        $allproducts = Product::getAllProducts();
+        ($_GET['category_id'] or $_GET['name'] or
+        $_GET['name'] or $_GET['id'] or 
+        $_GET['start'] or
+        $_GET['end']) ? $allproducts = Product::searchProducts($category_id, $name, $p_id, $p_price_start, $p_price_end) : $allproducts = Product::getAllProducts();
+        // echo '<script>console.log('. $allproducts[0] .'); </script>';
+        // $allproducts = Product::getAllProducts();
         $category = Category::getAllCategories();
-        $products = Product::getProductByPaging($page, $num_products_per_page);
+        // if ($request)
+        // $products = Product::getProductByPaging($page, $num_products_per_page);
         $num_products = count($allproducts);
         $page_nums = ceil($num_products/$num_products_per_page);
+        if ($num_products < $num_products_per_page) {
+            for ($i = 0; $i < $num_products; $i++) {
+                array_push($products, $allproducts[$i]);
+            }
+        } else if ($num_products - ($page - 1)*$num_products_per_page < $num_products_per_page) {
+            for ($i = ($page - 1) * $num_products_per_page; $i < $num_products; $i++) {
+                array_push($products, $allproducts[$i]);
+            }
+        } else {
+            for ($i = ($page - 1) * $num_products_per_page; $i < $page * $num_products_per_page; $i++) {
+                array_push($products, $allproducts[$i]);
+            }
+
+        }
         $model = new Product();
         $this->setLayout('admin');
         return $this->render('products', [
@@ -36,7 +67,8 @@ class ProductController extends Controller
             'model' => $model,
             'category' => $category,
             'page' => $page,
-            'page_nums' => $page_nums
+            'page_nums' => $page_nums,
+            'name' => $_GET['category_id']
         ]);
     }
 

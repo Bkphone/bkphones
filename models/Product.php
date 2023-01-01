@@ -171,7 +171,6 @@ class Product extends DBModel
             'detail' => 'Chi tiết',
             'star' => 'Star',
             'rate_count' => 'Số lượt đánh giá',
-            'star' => 'Star',
             'screen' => 'Màn hình',
             'os' => 'Hệ điều hành',
             'camera' => 'Camera sau',
@@ -241,16 +240,16 @@ class Product extends DBModel
         }
 
         foreach ($req->fetchAll() as $item) {
-            $list[] = new Product(
-                $item['id'],
-                $item['category_id'],
-                $item['name'],
-                $item['price_show'],
-                $item['price_through'],
-                $item['discount'],
-                $item['description'],
-                $item['image_url']
-            );
+            // $list[] = new Product(
+            //     $item['id'],
+            //     $item['category_id'],
+            //     $item['name'],
+            //     $item['price_show'],
+            //     $item['price_through'],
+            //     $item['discount'],
+            //     $item['description'],
+            //     $item['image_url']
+            // );
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
@@ -287,21 +286,21 @@ class Product extends DBModel
         $req = $db->query('SELECT * FROM products');
 
         foreach ($req->fetchAll() as $item) {
-            $list[] = new Product(
-                $item['id'],
-                $item['category_id'],
-                $item['name'],
-                $item['price_show'],
-                $item['price_through'],
-                $item['discount'],
-                $item['description'],
-                $item['image_url']
-            );
+            // $list[] = new Product(
+            //     $item['id'],
+            //     $item['category_id'],
+            //     $item['name'],
+            //     $item['price_show'],
+            //     $item['price_through'],
+            //     $item['discount'],
+            //     $item['description'],
+            //     $item['image_url']
+            // );
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
                             $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
-                            $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery'])
+                            $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
         }
 
         return $list;
@@ -320,7 +319,18 @@ class Product extends DBModel
             $item['price_through'],
             $item['discount'],
             $item['description'],
-            $item['image_url']
+            $item['image_url'],
+            $item["star"],
+            $item["rate_count"],
+            $item["screen"],
+            $item["os"],
+            $item["camera"],
+            $item["camera_front"],
+            $item["cpu"],
+            $item["ram"],
+            $item["rom"],
+            $item["micro_usb"],
+            $item["battery"]
         );
         return $product;
     }
@@ -332,7 +342,7 @@ class Product extends DBModel
         }
     }
 
-    public function updateProduct(Product $product)
+    public static function updateProduct(Product $product)
     {
         $sql = "UPDATE products 
                 SET 
@@ -342,11 +352,56 @@ class Product extends DBModel
                     price_through = $product->price_through,
                     discount = '$product->discount',
                     description = '$product->description',
-                    image_url = '$product->image_url'
+                    image_url = '$product->image_url',
+                    star = '$product->star',
+                    rate_count = '$product->rate_count',
+                    screen = '$product->screen',
+                    os = '$product->os',
+                    camera = '$product->camera',
+                    camera_front = '$product->camera_front',
+                    cpu = '$product->cpu',
+                    ram = '$product->ram',
+                    rom = '$product->rom',
+                    micro_usb = '$product->micro_usb',
+                    battery = '$product->battery'
                 WHERE id = '$product->id'";
         $statement = self::prepare($sql);
         $statement->execute();
         return true;
+    }
+
+    public static function searchProducts($category_id, $product_name, $product_id, $price_range_s, $price_range_e) {
+        
+        $category_id === '0' ? $c_id = '' : $c_id = " category_id = " . $category_id;
+        $product_name === '' ? $name = " name LIKE '%' " : $name = "name LIKE '" . "%" . $product_name . "%'";
+        $product_id === '' ? $p_id = " id LIKE '%' " : $p_id = "id LIKE '" . $product_id . "%'";
+        $price = '';
+        if ($price_range_e != '' and $price_range_s != '') {
+            $price .= "price_through BETWEEN " . $price_range_s . " AND " . $price_range_e;
+        } else {
+            if ($price_range_s != '') {
+                $price .= "price_through > " .$price_range_s;
+            }
+            if ($price_range_e != '') {
+                $price .= "price_through < " . $price_range_e;
+            }
+        }
+        $query = "SELECT * FROM products WHERE ";
+        $query .= $name . " AND " . $p_id;
+        $c_id === '' ? $query .= "" : $query .= " AND " . $c_id;
+        $price === '' ? $query .= "" : $query .= " AND " . $price;
+
+        $db = Database::getInstance();
+        $req = $db->query($query);
+        $list = [];
+        foreach ($req->fetchAll() as $item) {
+            $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
+                            $item['price_show'], $item['price_through'], $item['discount'], 
+                            $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
+                            $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
+                            $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
+        }
+        return $list;
     }
 
     public static function searchProductByName($name)
