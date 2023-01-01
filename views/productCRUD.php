@@ -67,15 +67,6 @@ use app\core\Form\Field;
         <div class="col" style="margin-bottom: 10px;">
             <?php echo $form->field($model, 'battery') ?>
         </div>
-        <!-- <div class="col" style="margin-bottom: 10px;">
-            <div class="mb-3">
-                <label for="status" class="form-label">Trạng thái: </label>
-                <select name="status" class="form-control" id="status" style="height: 35px;border: 1px solid #c9c7c7;border-radius:5px;">
-                    <option value="available">Available</option>
-                    <option value="out_of_stock">Out of Stock</option>
-                </select>
-            </div>
-        </div> -->
         <div class="col">
             <button type="submit" class="btn btn-success" style="margin:10px 0;display:<?php if ($params['type'] == 'update') {echo "none;";} ?>">Thêm sản phẩm</button>
             <button type="submit" class="btn btn-warning" style="margin:10px 0;display:<?php if ($params['type'] == 'create') {echo "none;";} ?>">Cập nhật</button>

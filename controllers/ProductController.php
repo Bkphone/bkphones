@@ -26,20 +26,11 @@ class ProductController extends Controller
         $_GET['start'] ? $p_price_start = $_GET['start'] : $p_price_start = '';
         $_GET['end'] ? $p_price_end = $_GET['end'] : $p_price_end = '';
             
-            // $page = $_GET['page'];
-            // $name = $_GET['name'];
-            // $product_id = $_GET['id'];
-            // $price_range_s = $_GET['start'];
-            // $price_range_e = $_GET['end'];
-            // if ($category_id != '0' or $name != '' or $product_id != '' or $price_range_s != '' or $price_range_e != '') {
-            //     $allproducts = Product::searchProducts($category_id, $name, $product_id, $price_range_s, $price_range_e);
-            // }
         $num_products_per_page = 10;
         ($_GET['category_id'] or $_GET['name'] or
         $_GET['name'] or $_GET['id'] or 
         $_GET['start'] or
         $_GET['end']) ? $allproducts = Product::searchProducts($category_id, $name, $p_id, $p_price_start, $p_price_end) : $allproducts = Product::getAllProducts();
-        // echo '<script>console.log('. $allproducts[0] .'); </script>';
         // $allproducts = Product::getAllProducts();
         $category = Category::getAllCategories();
         // if ($request)
