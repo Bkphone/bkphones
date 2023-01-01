@@ -19,18 +19,19 @@ class ProductController extends Controller
     public function index() 
     {
         $products = [];
-        $_GET['page'] ? $page = $_GET['page'] : $page = 1;
-        $_GET['category_id'] ? $category_id = $_GET['category_id'] : $category_id = '0';
-        $_GET['name'] ? $name = $_GET['name'] : $name = '';
-        $_GET['id'] ? $p_id = $_GET['id'] : $p_id = '';
-        $_GET['start'] ? $p_price_start = $_GET['start'] : $p_price_start = '';
-        $_GET['end'] ? $p_price_end = $_GET['end'] : $p_price_end = '';
+        isset($_GET['page']) ? $page = $_GET['page'] : $page = 1;
+        isset($_GET['category_id']) ? $category_id = $_GET['category_id'] : $category_id = '0';
+        isset($_GET['name']) ? $name = $_GET['name'] : $name = '';
+        isset($_GET['id']) ? $p_id = $_GET['id'] : $p_id = '';
+        isset($_GET['start']) ? $p_price_start = $_GET['start'] : $p_price_start = '';
+        isset($_GET['end']) ? $p_price_end = $_GET['end'] : $p_price_end = '';
             
         $num_products_per_page = 10;
-        ($_GET['category_id'] or $_GET['name'] or
-        $_GET['name'] or $_GET['id'] or 
-        $_GET['start'] or
-        $_GET['end']) ? $allproducts = Product::searchProducts($category_id, $name, $p_id, $p_price_start, $p_price_end) : $allproducts = Product::getAllProducts();
+        $allproducts = (isset($_GET['category_id']) || isset($_GET['name']) ||
+                isset($_GET['id']) || isset($_GET['start']) ||
+                isset($_GET['end']))
+              ? Product::searchProducts($category_id, $name, $p_id, $p_price_start, $p_price_end)
+              : Product::getAllProducts();
         $category = Category::getAllCategories();
         $num_products = count($allproducts);
         $page_nums = ceil($num_products/$num_products_per_page);
@@ -56,7 +57,7 @@ class ProductController extends Controller
             'category' => $category,
             'page' => $page,
             'page_nums' => $page_nums,
-            'name' => $_GET['category_id']
+            'name' => $category_id
         ]);
     }
 

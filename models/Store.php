@@ -90,7 +90,7 @@ class Store extends DBModel
 
     public function getDisplayInfo(): string
     {
-        return $this->name . ' ' . $this->address . ' ' . $this->phone;
+        return $this->address . ' ' . $this->phone;
     }
 
     public static function getAll()

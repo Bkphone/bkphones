@@ -1,3 +1,6 @@
+<?php
+use app\core\Application;
+?>
 <div class="row" style="margin: 0px 0px;">
     <h3>LỌC DANH SÁCH SẢN PHẨM</h3>
     <div class="row">

@@ -32,15 +32,8 @@
 use app\core\Application;
 use app\models\User;
 
-// $isGuest = Application::$app->isGuest();
-// if($isGuest) {
-//   Application::$app->response->redirect('/error');
-// }
 $userID = Application::$app->session->get('user');
 $userModel = User::getUserInfo($userID);
-// if($userModel->getRole() != 'admin') {
-//   Application::$app->response->redirect('/error');
-// }
 ?>
 
 <body>
@@ -58,7 +51,7 @@ $userModel = User::getUserInfo($userID);
           </a>
         </li>
         <li>
-          <a href="/admin/products" ?>
+          <a href="/admin/products?page=1">
             <i class="fab fa-product-hunt" aria-hidden="true"></i> &nbsp;Quản lý sản phẩm
           </a>
         </li>
