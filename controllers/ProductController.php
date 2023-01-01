@@ -31,10 +31,7 @@ class ProductController extends Controller
         $_GET['name'] or $_GET['id'] or 
         $_GET['start'] or
         $_GET['end']) ? $allproducts = Product::searchProducts($category_id, $name, $p_id, $p_price_start, $p_price_end) : $allproducts = Product::getAllProducts();
-        // $allproducts = Product::getAllProducts();
         $category = Category::getAllCategories();
-        // if ($request)
-        // $products = Product::getProductByPaging($page, $num_products_per_page);
         $num_products = count($allproducts);
         $page_nums = ceil($num_products/$num_products_per_page);
         if ($num_products < $num_products_per_page) {
