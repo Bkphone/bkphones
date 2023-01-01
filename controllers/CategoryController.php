@@ -52,9 +52,9 @@ class CategoryController extends Controller {
     public function update(Request $request) {
         $param = $request->getParam('id');
         $category = Category::get($param);
-        echo $category;
+        // echo $category;
         if ($request->getMethod() == "post") {
-            $category->loadData($request->getBody());
+            $category->name = $request->getBody()['name'];
             if ($category->validate() && Category::update($category)) {
                 Application::$app->response->redirect('/admin/category');
                 return 'Show Success Page';
@@ -65,6 +65,8 @@ class CategoryController extends Controller {
             'model' => $category,
             'type' => 'update'
         ]);
+        
+        $this->index();
     }
 
     public function delete(Request $request)
