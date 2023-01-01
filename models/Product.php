@@ -240,19 +240,6 @@ class Product extends DBModel
         }
 
         foreach ($req->fetchAll() as $item) {
-<<<<<<< HEAD
-            // $list[] = new Product(
-            //     $item['id'],
-            //     $item['category_id'],
-            //     $item['name'],
-            //     $item['price_show'],
-            //     $item['price_through'],
-            //     $item['discount'],
-            //     $item['description'],
-            //     $item['image_url']
-            // );
-=======
->>>>>>> master
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
@@ -289,19 +276,6 @@ class Product extends DBModel
         $req = $db->query('SELECT * FROM products');
 
         foreach ($req->fetchAll() as $item) {
-<<<<<<< HEAD
-            // $list[] = new Product(
-            //     $item['id'],
-            //     $item['category_id'],
-            //     $item['name'],
-            //     $item['price_show'],
-            //     $item['price_through'],
-            //     $item['discount'],
-            //     $item['description'],
-            //     $item['image_url']
-            // );
-=======
->>>>>>> master
             $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
                             $item['price_show'], $item['price_through'], $item['discount'], 
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
@@ -376,7 +350,6 @@ class Product extends DBModel
         return true;
     }
 
-<<<<<<< HEAD
     public static function searchProducts($category_id, $product_name, $product_id, $price_range_s, $price_range_e) {
         
         $category_id === '0' ? $c_id = '' : $c_id = " category_id = " . $category_id;
@@ -407,20 +380,6 @@ class Product extends DBModel
                             $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
                             $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
                             $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
-=======
-    public static function getProductsByCategory($category_id)
-    {
-        $list = [];
-        $db = Database::getInstance();
-        $req = $db->query("SELECT * FROM products WHERE category_id = '$category_id'");
-
-        foreach ($req->fetchAll() as $item) {
-            $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
-                                $item['price_show'], $item['price_through'], $item['discount'], 
-                                $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
-                                $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
-                                $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
->>>>>>> master
         }
         return $list;
     }
