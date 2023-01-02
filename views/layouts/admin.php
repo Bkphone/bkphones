@@ -34,6 +34,10 @@ use app\models\User;
 
 $userID = Application::$app->session->get('user');
 $userModel = User::getUserInfo($userID);
+
+if($userModel->role != 'admin') {
+  Application::$app->response->redirect('/error');
+}
 ?>
 
 <body>
