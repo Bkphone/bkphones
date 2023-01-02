@@ -404,6 +404,22 @@ class Product extends DBModel
         return $list;
     }
 
+    public static function getProductsByCategory($category_id)
+    {
+        $list = [];
+        $db = Database::getInstance();
+        $req = $db->query("SELECT * FROM products WHERE category_id = '$category_id'");
+
+        foreach ($req->fetchAll() as $item) {
+            $list[] = new Product($item['id'], $item['category_id'], $item['name'], 
+                                $item['price_show'], $item['price_through'], $item['discount'], 
+                                $item['description'], $item['image_url'], $item['rate_count'], $item['star'],
+                                $item['screen'], $item['os'], $item['camera'], $item['camera_front'], $item['cpu'],
+                                $item['ram'], $item['ram'], $item['rom'], $item['micro_usb'], $item['battery']);
+        }
+        return $list;
+    }
+    
     public function deleteProduct()
     {
         $tablename = $this->tableName();
