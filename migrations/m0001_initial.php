@@ -22,7 +22,7 @@ class m0001_initial
             `email` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
             `phone_number` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
             `password` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-            `image_url` varchar(4000) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+            `image_url` varchar(4000) COLLATE utf8mb4_vietnamese_ci,
             `address` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
             `ward_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
             `district_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,

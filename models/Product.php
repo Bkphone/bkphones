@@ -196,7 +196,6 @@ class Product extends DBModel
             'price_show' => [self::RULE_REQUIRED],
             'price_through' => [self::RULE_REQUIRED],
             'description' => [self::RULE_REQUIRED],
-            'image_url' => [self::RULE_REQUIRED],
             'category_id' => [self::RULE_REQUIRED]
         ];
     }
